@@ -61,7 +61,7 @@ The x-coordinates of the endpoi">
 <meta property="og:description" content="ProblemInput: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$Output: All intersection points between segements in SIn particular,we assume:  
 
 The x-coordinates of the endpoi">
-<meta property="og:updated_time" content="2015-12-31T02:15:19.000Z">
+<meta property="og:updated_time" content="2015-12-31T02:18:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Line Segment Intersection">
 <meta name="twitter:description" content="ProblemInput: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$Output: All intersection points between segements in SIn particular,we assume:  
@@ -259,7 +259,7 @@ The x-coordinates of the endpoi">
 <li>Sweep line status: store segments that intersect the sweep line $l$ ,ordered along the intersection with $l$.</li>
 <li>Events: (1)Points in time when sweep line status chaneges combinatorially(i.e., the order of segments intersecting $l$ changes). (2)Endpoints of segments(insert in beginning) (3)Intersection points(computing on the fly during plane sweep)</li>
 </ol>
-<h2 id="Intersection_Lemma"><a href="#Intersection_Lemma" class="headerlink" title="Intersection Lemma"></a>Intersection Lemma</h2><p>＊Lemma＊: Let $s$,$s^’$ be two non-vertical segments whose interiors intersect in a single point $p$. Assume there is no third segment passing through $p$. Then there is an event point to the left of $p$ where $s$ and $s$,$s^’$ become adjacent(and hence are tested for intersection).</p>
+<h2 id="Intersection_Lemma"><a href="#Intersection_Lemma" class="headerlink" title="Intersection Lemma"></a>Intersection Lemma</h2><p>＊Lemma＊: Let $s$,$s’$ be two non-vertical segments whose interiors intersect in a single point $p$. Assume there is no third segment passing through $p$. Then there is an event point to the left of $p$ where $s$ and $s$,$s’$ become adjacent(and hence are tested for intersection).</p>
 <h2 id="Data_structure"><a href="#Data_structure" class="headerlink" title="Data structure"></a>Data structure</h2><ol>
 <li>sweep line: orderded dictionary(balanced binary search tree) sorted vertically from top to down</li>
 <li>future event points: priority queue ordered from left to right by x-coordinates</li>
@@ -267,7 +267,7 @@ The x-coordinates of the endpoi">
 <h2 id="Alg"><a href="#Alg" class="headerlink" title="Alg"></a>Alg</h2><ol>
 <li>Insert all of the points o the line segments of $S$ into the event queue. The initial sweep-line status is empty.</li>
 <li>while the event queue is nonempty, extract the next event in the queue.There are there cases,depending on the type of the event:<br> -<em>Left endpoints</em>:<pre><code>(a)insert this line segments $s$ into the sweep-line status,based on the y-coordinats of its left endpoints  
-(b)Let $s^&apos;$ and $s^&apos;&apos;$ be the segments
+(b)Let $S$ and $s&apos;$ be the segments
 </code></pre> -<em>Right endpoint</em>:<br> -<em>Intersecion</em>:</li>
 </ol>
 </span>
