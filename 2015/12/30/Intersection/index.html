@@ -61,7 +61,7 @@ The x-coordinates of the endpoi">
 <meta property="og:description" content="ProblemInput: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$Output: All intersection points between segements in SIn particular,we assume:  
 
 The x-coordinates of the endpoi">
-<meta property="og:updated_time" content="2015-12-31T02:18:22.000Z">
+<meta property="og:updated_time" content="2015-12-31T02:39:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Line Segment Intersection">
 <meta name="twitter:description" content="ProblemInput: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$Output: All intersection points between segements in SIn particular,we assume:  
@@ -266,9 +266,12 @@ The x-coordinates of the endpoi">
 </ol>
 <h2 id="Alg"><a href="#Alg" class="headerlink" title="Alg"></a>Alg</h2><ol>
 <li>Insert all of the points o the line segments of $S$ into the event queue. The initial sweep-line status is empty.</li>
-<li>while the event queue is nonempty, extract the next event in the queue.There are there cases,depending on the type of the event:<br> -<em>Left endpoints</em>:<pre><code>(a)insert this line segments $s$ into the sweep-line status,based on the y-coordinats of its left endpoints  
-(b)Let $S$ and $s&apos;$ be the segments
-</code></pre> -<em>Right endpoint</em>:<br> -<em>Intersecion</em>:</li>
+<li>while the event queue is nonempty, extract the next event in the queue.There are there cases,depending on the type of the event:<ul>
+<li><em>Left endpoints</em>:<br>  (a)insert this line segments $s$ into the sweep-line status,based on the y-coordinats of its left endpoints<br>  (b)Let $S$ and $s’$ be the segments</li>
+<li><em>Right endpoint</em>:</li>
+<li><em>Intersecion</em>:</li>
+</ul>
+</li>
 </ol>
 </span>
       
