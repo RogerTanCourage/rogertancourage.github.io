@@ -51,22 +51,22 @@
 
 
 
-<meta name="description" content="ProblemInput: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$Output: All intersection points between segements in SIn particular,we assume:
+<meta name="description" content="ProblemInput: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$Output: All intersection points between segements in SIn particular,we assume:  
 
-The x-coordinates of the endpoint">
+The x-coordinates of the endpoi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Line Segment Intersection">
 <meta property="og:url" content="http://yoursite.com/2015/12/30/Intersection/index.html">
 <meta property="og:site_name" content="CV台风">
-<meta property="og:description" content="ProblemInput: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$Output: All intersection points between segements in SIn particular,we assume:
+<meta property="og:description" content="ProblemInput: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$Output: All intersection points between segements in SIn particular,we assume:  
 
-The x-coordinates of the endpoint">
-<meta property="og:updated_time" content="2015-12-31T01:53:49.000Z">
+The x-coordinates of the endpoi">
+<meta property="og:updated_time" content="2015-12-31T01:55:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Line Segment Intersection">
-<meta name="twitter:description" content="ProblemInput: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$Output: All intersection points between segements in SIn particular,we assume:
+<meta name="twitter:description" content="ProblemInput: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$Output: All intersection points between segements in SIn particular,we assume:  
 
-The x-coordinates of the endpoint">
+The x-coordinates of the endpoi">
 
 
 
@@ -248,7 +248,7 @@ The x-coordinates of the endpoint">
       
 
       
-        <span itemprop="articleBody"><h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>Input: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$<br>Output: All <em>intersection points</em> between segements in S<br>In particular,we assume:</p>
+        <span itemprop="articleBody"><h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>Input: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$<br>Output: All <em>intersection points</em> between segements in S<br>In particular,we assume:  </p>
 <ol>
 <li>The x-coordinates of the endpoints and intersection points are all distinct.(This implies that no line segment is vertical).</li>
 <li>If two segments intersect, then they intersect in a single point(they are not collinear).</li>
@@ -257,7 +257,7 @@ The x-coordinates of the endpoint">
 <h1 id="Plane_Sweep_Alg"><a href="#Plane_Sweep_Alg" class="headerlink" title="Plane Sweep Alg."></a>Plane Sweep Alg.</h1><h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><ol>
 <li>Cleanliness property: all intersections to the left of sweep line $l$ have been reported</li>
 <li>Sweep line status: store segments that intersect the sweep line $l$ ,ordered along the intersection with $l$.</li>
-<li>Events: (1)Points in time when sweep line status chaneges combinatorially(i.e., the order of segments intersecting $l$ changes). (2)Endpoints of segments(insert in beginning) (3)Intersection points(computing on the fly during plane sweep)  <h2 id="Intersection_Lemma"><a href="#Intersection_Lemma" class="headerlink" title="Intersection Lemma"></a>Intersection Lemma</h2>Lemma: Let $s,s\’$ be two non-vertical segments whose interiors intersect in a single point $p$. Assume there is no third segment passing through $p$. Then there is an event point to the left of $p$ where $s$ and $s\’$ become adjacent(and hence are tested for intersection).<h2 id="Data_structure"><a href="#Data_structure" class="headerlink" title="Data structure"></a>Data structure</h2></li>
+<li>Events: (1)Points in time when sweep line status chaneges combinatorially(i.e., the order of segments intersecting $l$ changes). (2)Endpoints of segments(insert in beginning) (3)Intersection points(computing on the fly during plane sweep)  <h2 id="Intersection_Lemma"><a href="#Intersection_Lemma" class="headerlink" title="Intersection Lemma"></a>Intersection Lemma</h2>Lemma: Let $s,s\’$ be two non-vertical segments whose interiors intersect in a single point $p$. Assume there is no third segment passing through $p$. Then there is an event point to the left of $p$ where $s$ and $s\’$ become adjacent(and hence are tested for intersection).  <h2 id="Data_structure"><a href="#Data_structure" class="headerlink" title="Data structure"></a>Data structure</h2></li>
 <li>sweep line: orderded dictionary(balanced binary search tree) sorted vertically from top to down</li>
 <li>future event points: priority queue ordered from left to right by x-coordinates<br>##</li>
 </ol>
