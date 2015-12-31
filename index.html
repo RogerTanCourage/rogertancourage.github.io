@@ -264,11 +264,14 @@
 <h1 id="Plane_Sweep_Alg"><a href="#Plane_Sweep_Alg" class="headerlink" title="Plane Sweep Alg."></a>Plane Sweep Alg.</h1><h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><ol>
 <li>Cleanliness property: all intersections to the left of sweep line $l$ have been reported</li>
 <li>Sweep line status: store segments that intersect the sweep line $l$ ,ordered along the intersection with $l$.</li>
-<li>Events: (1)Points in time when sweep line status chaneges combinatorially(i.e., the order of segments intersecting $l$ changes). (2)Endpoints of segments(insert in beginning) (3)Intersection points(computing on the fly during plane sweep)  <h2 id="Intersection_Lemma"><a href="#Intersection_Lemma" class="headerlink" title="Intersection Lemma"></a>Intersection Lemma</h2>Lemma: Let $s,s\’$ be two non-vertical segments whose interiors intersect in a single point $p$. Assume there is no third segment passing through $p$. Then there is an event point to the left of $p$ where $s$ and $s\’$ become adjacent(and hence are tested for intersection).  <h2 id="Data_structure"><a href="#Data_structure" class="headerlink" title="Data structure"></a>Data structure</h2></li>
-<li>sweep line: orderded dictionary(balanced binary search tree) sorted vertically from top to down</li>
-<li>future event points: priority queue ordered from left to right by x-coordinates<br>##</li>
+<li>Events: (1)Points in time when sweep line status chaneges combinatorially(i.e., the order of segments intersecting $l$ changes). (2)Endpoints of segments(insert in beginning) (3)Intersection points(computing on the fly during plane sweep)</li>
 </ol>
-
+<h2 id="Intersection_Lemma"><a href="#Intersection_Lemma" class="headerlink" title="Intersection Lemma"></a>Intersection Lemma</h2><p>Lemma: Let $s,s\’$ be two non-vertical segments whose interiors intersect in a single point $p$. Assume there is no third segment passing through $p$. Then there is an event point to the left of $p$ where $s$ and $s\’$ become adjacent(and hence are tested for intersection).</p>
+<h2 id="Data_structure"><a href="#Data_structure" class="headerlink" title="Data structure"></a>Data structure</h2><ol>
+<li>sweep line: orderded dictionary(balanced binary search tree) sorted vertically from top to down</li>
+<li>future event points: priority queue ordered from left to right by x-coordinates</li>
+</ol>
+<h2 id="Alg"><a href="#Alg" class="headerlink" title="Alg"></a>Alg</h2>
             
           </span>
         
