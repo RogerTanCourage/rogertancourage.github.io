@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Computational Geometry," />
+  <meta name="keywords" content="广播剧," />
 
 
 
@@ -51,22 +51,22 @@
 
 
 
-<meta name="description" content="ProblemInput: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$Output: All intersection points between segements in SIn particular,we assume:  
-
-The x-coordinates of the endpoi">
+<meta name="description" content="主役协役龙套
+2016-1-1 《夏天的向日葵》
+2016-1-1 《仓鼠缘》">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Line Segment Intersection">
-<meta property="og:url" content="http://yoursite.com/2015/12/30/Intersection/index.html">
+<meta property="og:title" content="2016广播剧整理">
+<meta property="og:url" content="http://yoursite.com/2016/01/04/2016广播剧整理/index.html">
 <meta property="og:site_name" content="CV台风">
-<meta property="og:description" content="ProblemInput: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$Output: All intersection points between segements in SIn particular,we assume:  
-
-The x-coordinates of the endpoi">
-<meta property="og:updated_time" content="2015-12-31T02:50:00.000Z">
+<meta property="og:description" content="主役协役龙套
+2016-1-1 《夏天的向日葵》
+2016-1-1 《仓鼠缘》">
+<meta property="og:updated_time" content="2016-01-04T03:11:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Line Segment Intersection">
-<meta name="twitter:description" content="ProblemInput: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$Output: All intersection points between segements in SIn particular,we assume:  
-
-The x-coordinates of the endpoi">
+<meta name="twitter:title" content="2016广播剧整理">
+<meta name="twitter:description" content="主役协役龙套
+2016-1-1 《夏天的向日葵》
+2016-1-1 《仓鼠缘》">
 
 
 
@@ -78,7 +78,7 @@ The x-coordinates of the endpoi">
   };
 </script>
 
-  <title> Line Segment Intersection | CV台风 </title>
+  <title> 2016广播剧整理 | CV台风 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -208,7 +208,7 @@ The x-coordinates of the endpoi">
             
             
               
-                Line Segment Intersection
+                2016广播剧整理
               
             
           </h1>
@@ -217,8 +217,8 @@ The x-coordinates of the endpoi">
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-12-30T15:30:39+08:00" content="2015-12-30">
-              2015-12-30
+            <time itemprop="dateCreated" datetime="2016-01-04T11:05:33+08:00" content="2016-01-04">
+              2016-01-04
             </time>
           </span>
 
@@ -228,8 +228,8 @@ The x-coordinates of the endpoi">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/12/30/Intersection/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/30/Intersection/" itemprop="commentsCount"></span>
+                <a href="/2016/01/04/2016广播剧整理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/04/2016广播剧整理/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -248,30 +248,9 @@ The x-coordinates of the endpoi">
       
 
       
-        <span itemprop="articleBody"><h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>Input: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$<br>Output: All <em>intersection points</em> between segements in S<br>In particular,we assume:  </p>
-<ol>
-<li>The x-coordinates of the endpoints and intersection points are all distinct.(This implies that no line segment is vertical).</li>
-<li>If two segments intersect, then they intersect in a single point(they are not collinear).</li>
-<li>No three lines intersect in a common point.</li>
-</ol>
-<h1 id="Plane_Sweep_Alg"><a href="#Plane_Sweep_Alg" class="headerlink" title="Plane Sweep Alg."></a>Plane Sweep Alg.</h1><h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><ol>
-<li>Cleanliness property: all intersections to the left of sweep line $l$ have been reported</li>
-<li>Sweep line status: store segments that intersect the sweep line $l$ ,ordered along the intersection with $l$.</li>
-<li>Events: (1)Points in time when sweep line status chaneges combinatorially(i.e., the order of segments intersecting $l$ changes). (2)Endpoints of segments(insert in beginning) (3)Intersection points(computing on the fly during plane sweep)</li>
-</ol>
-<h2 id="Intersection_Lemma"><a href="#Intersection_Lemma" class="headerlink" title="Intersection Lemma"></a>Intersection Lemma</h2><p>＊Lemma＊: Let $s$,$s’$ be two non-vertical segments whose interiors intersect in a single point $p$. Assume there is no third segment passing through $p$. Then there is an event point to the left of $p$ where $s$ and $s$,$s’$ become adjacent(and hence are tested for intersection).</p>
-<h2 id="Data_structure"><a href="#Data_structure" class="headerlink" title="Data structure"></a>Data structure</h2><ol>
-<li>sweep line: orderded dictionary(balanced binary search tree) sorted vertically from top to down</li>
-<li>future event points: priority queue ordered from left to right by x-coordinates</li>
-</ol>
-<h2 id="Alg"><a href="#Alg" class="headerlink" title="Alg"></a>Alg</h2><ol>
-<li>Insert all of the points o the line segments of $S$ into the event queue. The initial sweep-line status is empty.</li>
-<li>while the event queue is nonempty, extract the next event in the queue.There are there cases,depending on the type of the event:<ul>
-<li><em>Left endpoints</em>:<br>  (a)insert this line segments $s$ into the sweep-line status,based on the y-coordinats of its left endpoints<br>  (b)Let $S$ and $s’$ be the segments immediately above and below $s$ on the sweep line. If there is an event associated with the pair, remove it from the event queue.<br>  (c)Test for intersection between $s$ and $s’$ and between $s$ and $s’’$ to the right of the sweep line. If so, add the correspoing event(s) to the event queue.</li>
-<li><em>Right endpoint</em>:<br>  (a)Let $s$ and $s’$ be the segments immediately above and below the sweep line.<br>  (b)Delete segments $s$ from the sweep line status.<br>  (c)Test for intersections between $s$ and $s’$ to the right of the sweep line. If so, add the corresponding event to the event queue.</li>
-<li><em>Intersecion</em>:<br>  (a) report this intersection.<br>  (b) Let $s$ and $s’$ be the two intersecting segments. Swap these two line segments in the sweep-line status.<br>  (c) As a result,$s$ and $s’$ have changed which segments are immediately above and below them. Remove any old events due to adjacencies that have ended and insert any new intersection events form adjacencies that have been created.</li>
-</ul>
-</li>
+        <span itemprop="articleBody"><h1 id="u4E3B_u5F79"><a href="#u4E3B_u5F79" class="headerlink" title="主役"></a>主役</h1><h1 id="u534F_u5F79"><a href="#u534F_u5F79" class="headerlink" title="协役"></a>协役</h1><h1 id="u9F99_u5957"><a href="#u9F99_u5957" class="headerlink" title="龙套"></a>龙套</h1><ol>
+<li>2016-1-1 《夏天的向日葵》</li>
+<li>2016-1-1 《仓鼠缘》</li>
 </ol>
 </span>
       
@@ -281,7 +260,7 @@ The x-coordinates of the endpoi">
       
         <div class="post-tags">
           
-            <a href="/tags/Computational-Geometry/" rel="tag">#Computational Geometry</a>
+            <a href="/tags/广播剧/" rel="tag">#广播剧</a>
           
         </div>
       
@@ -290,17 +269,13 @@ The x-coordinates of the endpoi">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/30/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2015/12/30/Intersection/" rel="next" title="Line Segment Intersection">
+                <i class="fa fa-chevron-left"></i> Line Segment Intersection
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/04/2016广播剧整理/" rel="prev" title="2016广播剧整理">
-                2016广播剧整理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -350,8 +325,8 @@ The x-coordinates of the endpoi">
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/12/30/Intersection/"
-           data-title="Line Segment Intersection" data-url="http://yoursite.com/2015/12/30/Intersection/">
+      <div class="ds-thread" data-thread-key="2016/01/04/2016广播剧整理/"
+           data-title="2016广播剧整理" data-url="http://yoursite.com/2016/01/04/2016广播剧整理/">
       </div>
     
   </div>
@@ -441,7 +416,7 @@ The x-coordinates of the endpoi">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Plane_Sweep_Alg"><span class="nav-number">2.</span> <span class="nav-text">Plane Sweep Alg.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">2.1.</span> <span class="nav-text">Concepts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Intersection_Lemma"><span class="nav-number">2.2.</span> <span class="nav-text">Intersection Lemma</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data_structure"><span class="nav-number">2.3.</span> <span class="nav-text">Data structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Alg"><span class="nav-number">2.4.</span> <span class="nav-text">Alg</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u4E3B_u5F79"><span class="nav-number">1.</span> <span class="nav-text">主役</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u534F_u5F79"><span class="nav-number">2.</span> <span class="nav-text">协役</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u9F99_u5957"><span class="nav-number">3.</span> <span class="nav-text">龙套</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
