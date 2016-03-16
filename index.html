@@ -255,7 +255,33 @@
         
           <span itemprop="articleBody">
             
-              <h1 id="test_it_21"><a href="#test_it_21" class="headerlink" title="test it!"></a>test it!</h1><pre><code>i love you
+              <h1 id="u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C"><a href="#u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C" class="headerlink" title="创建(外)表的典型操作"></a>创建(外)表的典型操作</h1><pre><code>CREATE EXTERNAL TABEL &apos;passenger&apos;(
+    &apos;city_id&apos; INT COMMENT &apos;城市id&apos;,
+    ‘phone_number’ BIGINT COMMENT &apos;用户手机号&apos;
+)
+COMMENT &apos;用户表&apos;
+PARTITION BY(
+    &apos;year&apos; string,
+    &apos;month&apos; string,
+    &apos;day&apos; string
+)
+row format delimited
+field terminated by &quot;\t&quot;
+location &apos;hdfs: //---&apos;
+/*增加partition*/
+ALTER TABLE passenger ADD IF NOT EXISTS PARTITION(year=&apos;2016&apos;,month=&apos;03&apos;,day=&apos;11&apos;) location=&apos;2016/03/11&apos; 
+</code></pre><h1 id="u67E5_u8BE2_u7ED3_u679C_u7684_u5B58_u50A8"><a href="#u67E5_u8BE2_u7ED3_u679C_u7684_u5B58_u50A8" class="headerlink" title="查询结果的存储"></a>查询结果的存储</h1><h2 id="u5B58_u50A8_u5230hive_u8868"><a href="#u5B58_u50A8_u5230hive_u8868" class="headerlink" title="存储到hive表"></a>存储到hive表</h2><pre><code>    //创建表
+    insert overwrite table ***
+    //查询语句
+    select * ...## 存储到hdfs某一个目录
+insert overwrite directory &apos;hdfs_dir/...&apos;
+select *...
+</code></pre><h2 id="u5B58_u50A8_u5230_u672C_u5730_u76EE_u5F55"><a href="#u5B58_u50A8_u5230_u672C_u5730_u76EE_u5F55" class="headerlink" title="存储到本地目录"></a>存储到本地目录</h2><pre><code>insert overwirte local directory &apos;local_dir/...&apos;
+select * ...
+</code></pre><h1 id="u5411hive_u8868_u88C5_u8F7D_u6570_u636E"><a href="#u5411hive_u8868_u88C5_u8F7D_u6570_u636E" class="headerlink" title="向hive表装载数据"></a>向hive表装载数据</h1><pre><code>//建表
+LOAD DATA (LOCAL) INPATH &apos;/dir/...&apos;
+OVERWRITE INTO TABLE tablename
+PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 </code></pre>
             
           </span>
