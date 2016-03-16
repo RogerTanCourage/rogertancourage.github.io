@@ -290,10 +290,16 @@ object Stat{
         .map{case((pid,phone),(ocount,disSum))=&gt;
             ((pid,phone),(ocount/peroid,0.0,disSum,ocount))
         }
-        //其他统计阶段
 
+        //其他阶段统计
     }
-}
+}            
+</code></pre><h1 id="u4F7F_u7528spark_u4ECEhive_u8868_u63D0_u53D6_u6570_u636E"><a href="#u4F7F_u7528spark_u4ECEhive_u8868_u63D0_u53D6_u6570_u636E" class="headerlink" title="使用spark从hive表提取数据"></a>使用spark从hive表提取数据</h1><pre><code>//部分
+val sqlContext=new HiveContext(sc)
+val sqlText=&quot; &quot;    //sql
+val dataExtracted=sqlContext.sql(sqlText).map{
+    case Row(pID: Long,pPhone: String,oId: Long,sCost:Double,aCost: Double)=&gt;pId.toString+&quot;\t&quot;+pPhone+&quot;\t&quot;
+}.repartition(5).saveAsTextFile(FILE_LOCATION)
 </code></pre>
             
           </span>

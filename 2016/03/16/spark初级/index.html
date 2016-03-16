@@ -67,7 +67,7 @@ package com.user
 
 import java.util
 import org.apache.spark.rdd">
-<meta property="og:updated_time" content="2016-03-16T07:29:08.000Z">
+<meta property="og:updated_time" content="2016-03-16T07:40:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spark初级">
 <meta name="twitter:description" content="预备从国内某约车软件实际工作出发，学习spark，特别感谢倚天同学指导。工作分了两部分，一部分是从hive表提取数据，第二部分是对本地数据进行统计。从hive提取数据需要hivesql相关知识，所以我先从第二份开始。
@@ -292,10 +292,16 @@ object Stat{
         .map{case((pid,phone),(ocount,disSum))=&gt;
             ((pid,phone),(ocount/peroid,0.0,disSum,ocount))
         }
-        //其他统计阶段
 
+        //其他阶段统计
     }
-}
+}            
+</code></pre><h1 id="u4F7F_u7528spark_u4ECEhive_u8868_u63D0_u53D6_u6570_u636E"><a href="#u4F7F_u7528spark_u4ECEhive_u8868_u63D0_u53D6_u6570_u636E" class="headerlink" title="使用spark从hive表提取数据"></a>使用spark从hive表提取数据</h1><pre><code>//部分
+val sqlContext=new HiveContext(sc)
+val sqlText=&quot; &quot;    //sql
+val dataExtracted=sqlContext.sql(sqlText).map{
+    case Row(pID: Long,pPhone: String,oId: Long,sCost:Double,aCost: Double)=&gt;pId.toString+&quot;\t&quot;+pPhone+&quot;\t&quot;
+}.repartition(5).saveAsTextFile(FILE_LOCATION)
 </code></pre></span>
       
     </div>
@@ -460,7 +466,7 @@ object Stat{
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u9884_u5907"><span class="nav-number">1.</span> <span class="nav-text">预备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spark__u672C_u5730_u6570_u636E_u7EDF_u8BA1"><span class="nav-number">2.</span> <span class="nav-text">spark 本地数据统计</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u9884_u5907"><span class="nav-number">1.</span> <span class="nav-text">预备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spark__u672C_u5730_u6570_u636E_u7EDF_u8BA1"><span class="nav-number">2.</span> <span class="nav-text">spark 本地数据统计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u4F7F_u7528spark_u4ECEhive_u8868_u63D0_u53D6_u6570_u636E"><span class="nav-number">3.</span> <span class="nav-text">使用spark从hive表提取数据</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
