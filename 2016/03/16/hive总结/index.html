@@ -59,7 +59,7 @@ COMMENT &amp;apos;用户表&amp;apos;
 PARTITION BY">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hive总结">
-<meta property="og:url" content="http://yoursite.com/2016/03/16/test-md/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/03/16/hive总结/index.html">
 <meta property="og:site_name" content="太疯的飞屋">
 <meta property="og:description" content="创建(外)表的典型操作CREATE EXTERNAL TABEL &amp;apos;passenger&amp;apos;(
     &amp;apos;city_id&amp;apos; INT COMMENT &amp;apos;城市id&amp;apos;,
@@ -67,7 +67,7 @@ PARTITION BY">
 )
 COMMENT &amp;apos;用户表&amp;apos;
 PARTITION BY">
-<meta property="og:updated_time" content="2016-03-16T07:10:38.000Z">
+<meta property="og:updated_time" content="2016-04-14T03:51:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hive总结">
 <meta name="twitter:description" content="创建(外)表的典型操作CREATE EXTERNAL TABEL &amp;apos;passenger&amp;apos;(
@@ -226,7 +226,7 @@ PARTITION BY">
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-03-16T13:43:55+08:00" content="2016-03-16">
+            <time itemprop="dateCreated" datetime="2016-03-16T11:30:43+08:00" content="2016-03-16">
               2016-03-16
             </time>
           </span>
@@ -237,8 +237,8 @@ PARTITION BY">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/16/test-md/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/test-md/" itemprop="commentsCount"></span>
+                <a href="/2016/03/16/hive总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/hive总结/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -272,11 +272,11 @@ field terminated by &quot;\t&quot;
 location &apos;hdfs: //---&apos;
 /*增加partition*/
 ALTER TABLE passenger ADD IF NOT EXISTS PARTITION(year=&apos;2016&apos;,month=&apos;03&apos;,day=&apos;11&apos;) location=&apos;2016/03/11&apos; 
-</code></pre><h1 id="u67E5_u8BE2_u7ED3_u679C_u7684_u5B58_u50A8"><a href="#u67E5_u8BE2_u7ED3_u679C_u7684_u5B58_u50A8" class="headerlink" title="查询结果的存储"></a>查询结果的存储</h1><h2 id="u5B58_u50A8_u5230hive_u8868"><a href="#u5B58_u50A8_u5230hive_u8868" class="headerlink" title="存储到hive表"></a>存储到hive表</h2><pre><code>    //创建表
-    insert overwrite table ***
-    //查询语句
-    select * ...## 存储到hdfs某一个目录
-insert overwrite directory &apos;hdfs_dir/...&apos;
+</code></pre><h1 id="u67E5_u8BE2_u7ED3_u679C_u7684_u5B58_u50A8"><a href="#u67E5_u8BE2_u7ED3_u679C_u7684_u5B58_u50A8" class="headerlink" title="查询结果的存储"></a>查询结果的存储</h1><h2 id="u5B58_u50A8_u5230hive_u8868"><a href="#u5B58_u50A8_u5230hive_u8868" class="headerlink" title="存储到hive表"></a>存储到hive表</h2><pre><code>//创建表
+insert overwrite table ***
+//查询语句
+select * ...
+</code></pre><h2 id="u5B58_u50A8_u5230hdfs_u67D0_u4E00_u4E2A_u76EE_u5F55"><a href="#u5B58_u50A8_u5230hdfs_u67D0_u4E00_u4E2A_u76EE_u5F55" class="headerlink" title="存储到hdfs某一个目录"></a>存储到hdfs某一个目录</h2><pre><code>insert overwrite directory &apos;hdfs_dir/...&apos;
 select *...
 </code></pre><h2 id="u5B58_u50A8_u5230_u672C_u5730_u76EE_u5F55"><a href="#u5B58_u50A8_u5230_u672C_u5730_u76EE_u5F55" class="headerlink" title="存储到本地目录"></a>存储到本地目录</h2><pre><code>insert overwirte local directory &apos;local_dir/...&apos;
 select * ...
@@ -302,16 +302,16 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/16/hive总结/" rel="next" title="hive总结">
-                <i class="fa fa-chevron-left"></i> hive总结
+              <a href="/2016/03/14/实习生活/" rel="next" title="实习生活">
+                <i class="fa fa-chevron-left"></i> 实习生活
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/16/spark初级笔记/" rel="prev" title="spark初级笔记">
-                spark初级笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/16/test-md/" rel="prev" title="hive总结">
+                hive总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -362,8 +362,8 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/16/test-md/"
-           data-title="hive总结" data-url="http://yoursite.com/2016/03/16/test-md/">
+      <div class="ds-thread" data-thread-key="2016/03/16/hive总结/"
+           data-title="hive总结" data-url="http://yoursite.com/2016/03/16/hive总结/">
       </div>
     
   </div>
@@ -453,7 +453,7 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C"><span class="nav-number">1.</span> <span class="nav-text">创建(外)表的典型操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u67E5_u8BE2_u7ED3_u679C_u7684_u5B58_u50A8"><span class="nav-number">2.</span> <span class="nav-text">查询结果的存储</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B58_u50A8_u5230hive_u8868"><span class="nav-number">2.1.</span> <span class="nav-text">存储到hive表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B58_u50A8_u5230_u672C_u5730_u76EE_u5F55"><span class="nav-number">2.2.</span> <span class="nav-text">存储到本地目录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5411hive_u8868_u88C5_u8F7D_u6570_u636E"><span class="nav-number">3.</span> <span class="nav-text">向hive表装载数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5176_u4ED6_u547D_u4EE4"><span class="nav-number">4.</span> <span class="nav-text">其他命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C"><span class="nav-number">1.</span> <span class="nav-text">创建(外)表的典型操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u67E5_u8BE2_u7ED3_u679C_u7684_u5B58_u50A8"><span class="nav-number">2.</span> <span class="nav-text">查询结果的存储</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B58_u50A8_u5230hive_u8868"><span class="nav-number">2.1.</span> <span class="nav-text">存储到hive表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B58_u50A8_u5230hdfs_u67D0_u4E00_u4E2A_u76EE_u5F55"><span class="nav-number">2.2.</span> <span class="nav-text">存储到hdfs某一个目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B58_u50A8_u5230_u672C_u5730_u76EE_u5F55"><span class="nav-number">2.3.</span> <span class="nav-text">存储到本地目录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5411hive_u8868_u88C5_u8F7D_u6570_u636E"><span class="nav-number">3.</span> <span class="nav-text">向hive表装载数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5176_u4ED6_u547D_u4EE4"><span class="nav-number">4.</span> <span class="nav-text">其他命令</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

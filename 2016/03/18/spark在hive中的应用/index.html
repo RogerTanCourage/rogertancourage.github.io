@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hive," />
+  <meta name="keywords" content="spark," />
 
 
 
@@ -51,31 +51,19 @@
 
 
 
-<meta name="description" content="创建(外)表的典型操作CREATE EXTERNAL TABEL &amp;apos;passenger&amp;apos;(
-    &amp;apos;city_id&amp;apos; INT COMMENT &amp;apos;城市id&amp;apos;,
-    ‘phone_number’ BIGINT COMMENT &amp;apos;用户手机号&amp;apos;
-)
-COMMENT &amp;apos;用户表&amp;apos;
-PARTITION BY">
+<meta name="description" content="连接spark sqlsparksql提供一种特殊的rdd，叫做schemerdd,schemerdd是存放row对象的rdd，每个row对象代表一行记录。附带包含每列的类型信息。Row类型只是对基本数据类型的数组的封装。schemerdd开起来和普通的rdd很像，但是可以利用结构信息更加高效的存储数据。scheme可以从外部数据创建，也可以从查询结果或者普通rdd中创建。
+SchemeRDD可以">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hive总结">
-<meta property="og:url" content="http://yoursite.com/2016/03/16/test-md/index.html">
+<meta property="og:title" content="spark在hive中的应用">
+<meta property="og:url" content="http://yoursite.com/2016/03/18/spark在hive中的应用/index.html">
 <meta property="og:site_name" content="太疯的飞屋">
-<meta property="og:description" content="创建(外)表的典型操作CREATE EXTERNAL TABEL &amp;apos;passenger&amp;apos;(
-    &amp;apos;city_id&amp;apos; INT COMMENT &amp;apos;城市id&amp;apos;,
-    ‘phone_number’ BIGINT COMMENT &amp;apos;用户手机号&amp;apos;
-)
-COMMENT &amp;apos;用户表&amp;apos;
-PARTITION BY">
-<meta property="og:updated_time" content="2016-03-16T07:10:38.000Z">
+<meta property="og:description" content="连接spark sqlsparksql提供一种特殊的rdd，叫做schemerdd,schemerdd是存放row对象的rdd，每个row对象代表一行记录。附带包含每列的类型信息。Row类型只是对基本数据类型的数组的封装。schemerdd开起来和普通的rdd很像，但是可以利用结构信息更加高效的存储数据。scheme可以从外部数据创建，也可以从查询结果或者普通rdd中创建。
+SchemeRDD可以">
+<meta property="og:updated_time" content="2016-03-19T10:21:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hive总结">
-<meta name="twitter:description" content="创建(外)表的典型操作CREATE EXTERNAL TABEL &amp;apos;passenger&amp;apos;(
-    &amp;apos;city_id&amp;apos; INT COMMENT &amp;apos;城市id&amp;apos;,
-    ‘phone_number’ BIGINT COMMENT &amp;apos;用户手机号&amp;apos;
-)
-COMMENT &amp;apos;用户表&amp;apos;
-PARTITION BY">
+<meta name="twitter:title" content="spark在hive中的应用">
+<meta name="twitter:description" content="连接spark sqlsparksql提供一种特殊的rdd，叫做schemerdd,schemerdd是存放row对象的rdd，每个row对象代表一行记录。附带包含每列的类型信息。Row类型只是对基本数据类型的数组的封装。schemerdd开起来和普通的rdd很像，但是可以利用结构信息更加高效的存储数据。scheme可以从外部数据创建，也可以从查询结果或者普通rdd中创建。
+SchemeRDD可以">
 
 
 
@@ -87,7 +75,7 @@ PARTITION BY">
   };
 </script>
 
-  <title> hive总结 | 太疯的飞屋 </title>
+  <title> spark在hive中的应用 | 太疯的飞屋 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -217,7 +205,7 @@ PARTITION BY">
             
             
               
-                hive总结
+                spark在hive中的应用
               
             
           </h1>
@@ -226,8 +214,8 @@ PARTITION BY">
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-03-16T13:43:55+08:00" content="2016-03-16">
-              2016-03-16
+            <time itemprop="dateCreated" datetime="2016-03-18T21:30:26+08:00" content="2016-03-18">
+              2016-03-18
             </time>
           </span>
 
@@ -237,8 +225,8 @@ PARTITION BY">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/16/test-md/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/test-md/" itemprop="commentsCount"></span>
+                <a href="/2016/03/18/spark在hive中的应用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/18/spark在hive中的应用/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -257,35 +245,23 @@ PARTITION BY">
       
 
       
-        <span itemprop="articleBody"><h1 id="u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C"><a href="#u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C" class="headerlink" title="创建(外)表的典型操作"></a>创建(外)表的典型操作</h1><pre><code>CREATE EXTERNAL TABEL &apos;passenger&apos;(
-    &apos;city_id&apos; INT COMMENT &apos;城市id&apos;,
-    ‘phone_number’ BIGINT COMMENT &apos;用户手机号&apos;
-)
-COMMENT &apos;用户表&apos;
-PARTITION BY(
-    &apos;year&apos; string,
-    &apos;month&apos; string,
-    &apos;day&apos; string
-)
-row format delimited
-field terminated by &quot;\t&quot;
-location &apos;hdfs: //---&apos;
-/*增加partition*/
-ALTER TABLE passenger ADD IF NOT EXISTS PARTITION(year=&apos;2016&apos;,month=&apos;03&apos;,day=&apos;11&apos;) location=&apos;2016/03/11&apos; 
-</code></pre><h1 id="u67E5_u8BE2_u7ED3_u679C_u7684_u5B58_u50A8"><a href="#u67E5_u8BE2_u7ED3_u679C_u7684_u5B58_u50A8" class="headerlink" title="查询结果的存储"></a>查询结果的存储</h1><h2 id="u5B58_u50A8_u5230hive_u8868"><a href="#u5B58_u50A8_u5230hive_u8868" class="headerlink" title="存储到hive表"></a>存储到hive表</h2><pre><code>    //创建表
-    insert overwrite table ***
-    //查询语句
-    select * ...## 存储到hdfs某一个目录
-insert overwrite directory &apos;hdfs_dir/...&apos;
-select *...
-</code></pre><h2 id="u5B58_u50A8_u5230_u672C_u5730_u76EE_u5F55"><a href="#u5B58_u50A8_u5230_u672C_u5730_u76EE_u5F55" class="headerlink" title="存储到本地目录"></a>存储到本地目录</h2><pre><code>insert overwirte local directory &apos;local_dir/...&apos;
-select * ...
-</code></pre><h1 id="u5411hive_u8868_u88C5_u8F7D_u6570_u636E"><a href="#u5411hive_u8868_u88C5_u8F7D_u6570_u636E" class="headerlink" title="向hive表装载数据"></a>向hive表装载数据</h1><pre><code>//建表
-LOAD DATA (LOCAL) INPATH &apos;/dir/...&apos;
-OVERWRITE INTO TABLE tablename
-PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
-</code></pre><h1 id="u5176_u4ED6_u547D_u4EE4"><a href="#u5176_u4ED6_u547D_u4EE4" class="headerlink" title="其他命令"></a>其他命令</h1><p>describe table; drop table ;show tables;!ls;</p>
-</span>
+        <span itemprop="articleBody"><h1 id="u8FDE_u63A5spark_sql"><a href="#u8FDE_u63A5spark_sql" class="headerlink" title="连接spark sql"></a>连接spark sql</h1><p>sparksql提供一种特殊的rdd，叫做schemerdd,schemerdd是存放row对象的rdd，每个row对象代表一行记录。附带包含每列的类型信息。Row类型只是对基本数据类型的数组的封装。schemerdd开起来和普通的rdd很像，但是可以利用结构信息更加高效的存储数据。scheme可以从外部数据创建，也可以从查询结果或者普通rdd中创建。</p>
+<p>SchemeRDD可以使用已有的rdd转化操作，比如map()和filter().furterhmore可以把任意的schemerdd注册为临时表（HiveContext.registerTempTable）</p>
+<p>Row对象表示schemerdd中的记录，其本质就是一个定长的字段数组，可以使用对应的getType()方法，比如getString(0)会把字段0按照字符串返回。</p>
+<pre><code>//访问toptweet这个schemerdd中的text列（第一列）
+val toptweet=toptweets.map(row=&gt;row.getString(0))
+</code></pre><p>若要把spark sql连接到一个部署好的hive上，必须把hive-site.xml复制到spark的配置文件目录中($spark_home/conf)。即使没有部署好hive,sparksql会在当前工作目录中创建出hive元数据库，叫作master_db。</p>
+<h1 id="u5728_u5E94_u7528_u4E2D_u4F7F_u7528spark_sql"><a href="#u5728_u5E94_u7528_u4E2D_u4F7F_u7528spark_sql" class="headerlink" title="在应用中使用spark sql"></a>在应用中使用spark sql</h1><h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2><pre><code>import org.apache.spark.sql.hive.HiveContext
+import org.apache.spark.sql.SQLContext
+</code></pre><h2 id="u9690_u5F0F_u8F6C_u6362_u652F_u6301"><a href="#u9690_u5F0F_u8F6C_u6362_u652F_u6301" class="headerlink" title="隐式转换支持"></a>隐式转换支持</h2><pre><code>//创建spark sql的HiveContext
+val hiveCtx=...
+//导入隐式转换支持
+import hiveCtx._
+
+//创建上下文环境
+val sc=new SparkContext(...)
+val hiveCtx=new HiveContext(sc)
+</code></pre></span>
       
     </div>
 
@@ -293,7 +269,7 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
       
         <div class="post-tags">
           
-            <a href="/tags/hive/" rel="tag">#hive</a>
+            <a href="/tags/spark/" rel="tag">#spark</a>
           
         </div>
       
@@ -302,16 +278,16 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/16/hive总结/" rel="next" title="hive总结">
-                <i class="fa fa-chevron-left"></i> hive总结
+              <a href="/2016/03/16/spark初级/" rel="next" title="spark初级">
+                <i class="fa fa-chevron-left"></i> spark初级
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/16/spark初级笔记/" rel="prev" title="spark初级笔记">
-                spark初级笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/04/14/RDD编程/" rel="prev" title="RDD编程">
+                RDD编程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -362,8 +338,8 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/16/test-md/"
-           data-title="hive总结" data-url="http://yoursite.com/2016/03/16/test-md/">
+      <div class="ds-thread" data-thread-key="2016/03/18/spark在hive中的应用/"
+           data-title="spark在hive中的应用" data-url="http://yoursite.com/2016/03/18/spark在hive中的应用/">
       </div>
     
   </div>
@@ -453,7 +429,7 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C"><span class="nav-number">1.</span> <span class="nav-text">创建(外)表的典型操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u67E5_u8BE2_u7ED3_u679C_u7684_u5B58_u50A8"><span class="nav-number">2.</span> <span class="nav-text">查询结果的存储</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B58_u50A8_u5230hive_u8868"><span class="nav-number">2.1.</span> <span class="nav-text">存储到hive表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B58_u50A8_u5230_u672C_u5730_u76EE_u5F55"><span class="nav-number">2.2.</span> <span class="nav-text">存储到本地目录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5411hive_u8868_u88C5_u8F7D_u6570_u636E"><span class="nav-number">3.</span> <span class="nav-text">向hive表装载数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5176_u4ED6_u547D_u4EE4"><span class="nav-number">4.</span> <span class="nav-text">其他命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u8FDE_u63A5spark_sql"><span class="nav-number">1.</span> <span class="nav-text">连接spark sql</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5728_u5E94_u7528_u4E2D_u4F7F_u7528spark_sql"><span class="nav-number">2.</span> <span class="nav-text">在应用中使用spark sql</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#import"><span class="nav-number">2.1.</span> <span class="nav-text">import</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u9690_u5F0F_u8F6C_u6362_u652F_u6301"><span class="nav-number">2.2.</span> <span class="nav-text">隐式转换支持</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

@@ -187,6 +187,242 @@
 
     
     
+      
+      
+        
+        
+        
+      
+
+      
+    
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/14/RDD编程/" itemprop="url">
+                  RDD编程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-04-14T10:35:42+08:00" content="2016-04-14">
+              2016-04-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/14/RDD编程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/RDD编程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="RDD_u57FA_u7840"><a href="#RDD_u57FA_u7840" class="headerlink" title="RDD基础"></a>RDD基础</h1><p>弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率</p>
+<p>两种创建rdd方式：来自外部数据集和来自对象集合</p>
+<pre><code>lines=sc.textFile(&apos;README.md&apos;)
+lines=sc.parallelize([&apos;good&apos;,&apos;bad&apos;])
+</code></pre><h1 id="u5E38_u89C1_u8F6C_u6362_u548C_u884C_u52A8_u64CD_u4F5C"><a href="#u5E38_u89C1_u8F6C_u6362_u548C_u884C_u52A8_u64CD_u4F5C" class="headerlink" title="常见转换和行动操作"></a>常见转换和行动操作</h1><h2 id="u9488_u5BF9_u5404_u4E2A_u5143_u7D20_u7684_u8F6C_u5316_u64CD_u4F5C"><a href="#u9488_u5BF9_u5404_u4E2A_u5143_u7D20_u7684_u8F6C_u5316_u64CD_u4F5C" class="headerlink" title="针对各个元素的转化操作"></a>针对各个元素的转化操作</h2><p>map,flatMap(传入函数返回可迭代对象)，filter(返回bool类型)</p>
+<h2 id="u4F2A_u96C6_u5408_u64CD_u4F5C"><a href="#u4F2A_u96C6_u5408_u64CD_u4F5C" class="headerlink" title="伪集合操作"></a>伪集合操作</h2><p>rdd.distinct():开销大，需要对所有数据通过网络进行混洗（shuffle）</p>
+<p>rdd.union():会有重</p>
+<p>rdd.interseciont(anoter):去重，单个rdd重复也去，也要shuffle,性能差</p>
+<p>rdd.subtract(anoter):shuffle</p>
+<p>rdd.sample(flalse,0,5,777): 采样，例子为50%，不放回</p>
+<p>rdd.takeSample(true,100,777)</p>
+<h2 id="u884C_u52A8_u64CD_u4F5C"><a href="#u884C_u52A8_u64CD_u4F5C" class="headerlink" title="行动操作"></a>行动操作</h2><p>rdd.reduce(lambda x,y :x+y):接受一个函数作为参数，这个函数要操作两个rdd的元素的数据并且返回一个同样类型的新元素，多用于计算rdd中所有元素的总和，元素的个数等。</p>
+<p>rdd.collect():要求能放进一台机器的内存中，因此多用于单元测试</p>
+<p>rdd.take(100): 尝试访问尽量少的分区，操作会得到一个不均衡集合，返回顺序不定</p>
+<p>rdd.top(100) 返回前100，可指定排序</p>
+<p>rdd.takeOrdered(100)(myordering)</p>
+<p>rdd.foreach(func) 对rdd的每个元素使用func,例如 rdd.foreach(println)</p>
+<h1 id="pair_rdd"><a href="#pair_rdd" class="headerlink" title="pair rdd"></a>pair rdd</h1><h2 id="for_each_pair_rdd"><a href="#for_each_pair_rdd" class="headerlink" title="for each pair rdd"></a>for each pair rdd</h2><p>rdd.reduceByKey(func): combine rdds with the same key,e.g. rdd.reduceByKey(lambda (x,y):x+y)</p>
+<p>rdd.groupByKey : e.g. rdd={(1,2),(3,4),(3,6)}<br>==&gt; {(1,[2]),(3,[4,6])}</p>
+<p>rdd.mapValues(func): imply func on each value with the key unchanged</p>
+<p>rdd.flatMapValues(func)</p>
+<p>rdd.keys(): return a new rdd consist of keys</p>
+<p>rdd.values()</p>
+<p>rdd.sortByKey() e.g. rdd.sortByKey(asending=true,numPartitions=None,keyFunc=labmda x:str(x))</p>
+<h2 id="for_two_pair_rdd"><a href="#for_two_pair_rdd" class="headerlink" title="for two pair rdd"></a>for two pair rdd</h2><p>rdd.subtractByKey(anoter)</p>
+<p>rdd.join(anoter): inner</p>
+<p>rdd.leftOuterJoin(anoter)</p>
+<p>rdd.rightOuterJoin(anoter)</p>
+<p>rdd.cogroup(anoter): e.g. rdd={(1,2),(3,4),(3,5)} anoter={(3,6)}  ==&gt; {(1,([2],[])),(3,([4,5],[6])}</p>
+<h2 id="combine_action"><a href="#combine_action" class="headerlink" title="combine action"></a>combine action</h2><p>combineByKey()?????</p>
+<p>##pair rdd action<br>countByKey</p>
+<p>collectAsMap()</p>
+<p>lookup(key)</p>
+<h1 id="u6027_u80FD_u63D0_u5347"><a href="#u6027_u80FD_u63D0_u5347" class="headerlink" title="性能提升"></a>性能提升</h1><ol>
+<li>rdd.textFile(‘sss’).repartition(10000）单个机器内存不够时，重新增加分区</li>
+<li>rdd.coalesce(100).saveAsTextFile</li>
+</ol>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/18/spark在hive中的应用/" itemprop="url">
+                  spark在hive中的应用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-03-18T21:30:26+08:00" content="2016-03-18">
+              2016-03-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/18/spark在hive中的应用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/18/spark在hive中的应用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="u8FDE_u63A5spark_sql"><a href="#u8FDE_u63A5spark_sql" class="headerlink" title="连接spark sql"></a>连接spark sql</h1><p>sparksql提供一种特殊的rdd，叫做schemerdd,schemerdd是存放row对象的rdd，每个row对象代表一行记录。附带包含每列的类型信息。Row类型只是对基本数据类型的数组的封装。schemerdd开起来和普通的rdd很像，但是可以利用结构信息更加高效的存储数据。scheme可以从外部数据创建，也可以从查询结果或者普通rdd中创建。</p>
+<p>SchemeRDD可以使用已有的rdd转化操作，比如map()和filter().furterhmore可以把任意的schemerdd注册为临时表（HiveContext.registerTempTable）</p>
+<p>Row对象表示schemerdd中的记录，其本质就是一个定长的字段数组，可以使用对应的getType()方法，比如getString(0)会把字段0按照字符串返回。</p>
+<pre><code>//访问toptweet这个schemerdd中的text列（第一列）
+val toptweet=toptweets.map(row=&gt;row.getString(0))
+</code></pre><p>若要把spark sql连接到一个部署好的hive上，必须把hive-site.xml复制到spark的配置文件目录中($spark_home/conf)。即使没有部署好hive,sparksql会在当前工作目录中创建出hive元数据库，叫作master_db。</p>
+<h1 id="u5728_u5E94_u7528_u4E2D_u4F7F_u7528spark_sql"><a href="#u5728_u5E94_u7528_u4E2D_u4F7F_u7528spark_sql" class="headerlink" title="在应用中使用spark sql"></a>在应用中使用spark sql</h1><h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2><pre><code>import org.apache.spark.sql.hive.HiveContext
+import org.apache.spark.sql.SQLContext
+</code></pre><h2 id="u9690_u5F0F_u8F6C_u6362_u652F_u6301"><a href="#u9690_u5F0F_u8F6C_u6362_u652F_u6301" class="headerlink" title="隐式转换支持"></a>隐式转换支持</h2><pre><code>//创建spark sql的HiveContext
+val hiveCtx=...
+//导入隐式转换支持
+import hiveCtx._
+
+//创建上下文环境
+val sc=new SparkContext(...)
+val hiveCtx=new HiveContext(sc)
+</code></pre>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -788,21 +1024,21 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 <li>6:50起床</li>
 <li>喝水，厕所，温水洗漱，7：20出门</li>
 <li>早餐：鸡蛋，粥</li>
-<li>工作：<ul>
+<li>工作：<ol>
 <li>查收工作邮件，结合前一晚工作安排，安排今日工作</li>
 <li>上午安排最艰难工作</li>
 <li>10：30 放松眼睛，加餐，水果，牛奶或燕麦，二十分钟</li>
 <li>12:00 午餐：一荤一素，细嚼慢咽，八分饱</li>
-</ul>
+</ol>
 </li>
 <li>12:30-1:00 微博qq社交</li>
 <li>1：00-1：30 午睡</li>
 <li>1:30-2:00 阅读杂志</li>
-<li>工作：<ul>
+<li>工作：<ol>
 <li>to do</li>
 <li>4点半加餐，哑铃小运动</li>
 <li>to do</li>
-</ul>
+</ol>
 </li>
 <li>6:00 晚餐：一荤一素，细嚼慢咽，八分饱</li>
 <li>6：30-7：00 阅读，查收邮件</li>
@@ -818,100 +1054,6 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 <li><p>碎片化的时间，不如路上可以背单词，听英文，听剧。</p>
 <p>to be conti</p>
 </li>
-</ol>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/04/2016广播剧整理/" itemprop="url">
-                  2016广播剧整理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-01-04T11:05:33+08:00" content="2016-01-04">
-              2016-01-04
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/04/2016广播剧整理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/04/2016广播剧整理/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h1 id="u4E3B_u5F79"><a href="#u4E3B_u5F79" class="headerlink" title="主役"></a>主役</h1><h1 id="u534F_u5F79"><a href="#u534F_u5F79" class="headerlink" title="协役"></a>协役</h1><ol>
-<li>2016-1-1 《莲君》</li>
-<li>》<h1 id="u9F99_u5957"><a href="#u9F99_u5957" class="headerlink" title="龙套"></a>龙套</h1></li>
-<li>2016-1-1 《夏天的向日葵》</li>
-<li>2016-1-1 《仓鼠缘》</li>
-<li>2016-1-1 《七年之痒》</li>
 </ol>
 
             
@@ -1046,214 +1188,6 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/30/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-12-30T14:51:39+08:00" content="2015-12-30">
-              2015-12-30
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/30/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/30/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>The Arithmetic mean is equal is $\frac{1}{n} \sum_{i=i}^{n} x_{i}$, or the sumation of n numbers divided by n.</p>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/24/极简主义/" itemprop="url">
-                  极简主义
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-12-24T22:51:21+08:00" content="2015-12-24">
-              2015-12-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/极简主义/" itemprop="url" rel="index">
-                    <span itemprop="name">极简主义</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/24/极简主义/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/24/极简主义/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h1 id="u6781_u7B80_u4E3B_u4E49"><a href="#u6781_u7B80_u4E3B_u4E49" class="headerlink" title="极简主义"></a>极简主义</h1><blockquote>
-<p>没有多余的摆设，将生活用品精简到最少，伊娃说：“这种极度削尖的方式，使人更容易将注意力集中房间里那些为数不多的物件上。这种环境令人心绪平静，也使人感官更敏锐。”这是极简主义者的基本信仰。同样信奉极简主义的还有我们伟大的乔布斯先生。据说，乔布斯生前拥有的物品非常少，除了一年四季穿的黑色上衣，就只有一套昂贵的印象设备。乔布斯同样也是个禅宗信徒，物品的削减，从一个侧面反映了他心灵的干净。</p>
-<h1 id="u5BF9_u7269_u54C1_u7684_u770B_u6CD5"><a href="#u5BF9_u7269_u54C1_u7684_u770B_u6CD5" class="headerlink" title="对物品的看法"></a>对物品的看法</h1><ol>
-<li><strong><em>不持有</em></strong>：超出自己管理能力的、不种爱的、无法回收利用或转送他人的、不适合自己，与自己生活方式不相符的物品。</li>
-<li>珍惜我拥有的每一样东西，细致对待，珍惜他们就像刚开始拥有时那样。</li>
-<li>尽力做到购买自己能力范围内的最好的物品。</li>
-<li>对于物品的丢失和损坏保持一颗平常心，不过分懊悔和难过。</li>
-</ol>
-</blockquote>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1300,7 +1234,7 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

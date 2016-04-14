@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="广播剧," />
+  <meta name="keywords" content="Spark," />
 
 
 
@@ -51,31 +51,25 @@
 
 
 
-<meta name="description" content="主役协役
-2016-1-1 《莲君》
-》龙套
-2016-1-1 《夏天的向日葵》
-2016-1-1 《仓鼠缘》
-2016-1-1 《七年之痒》">
+<meta name="description" content="RDD基础弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率
+两种创建rdd方式：来自外部数据集和来自对象集合
+lines=sc.textFile(&amp;apos;README.md&amp;apos;)
+lines=sc.parallelize([&amp;ap">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2016广播剧整理">
-<meta property="og:url" content="http://yoursite.com/2016/01/04/2016广播剧整理/index.html">
+<meta property="og:title" content="RDD编程">
+<meta property="og:url" content="http://yoursite.com/2016/04/14/RDD编程/index.html">
 <meta property="og:site_name" content="太疯的飞屋">
-<meta property="og:description" content="主役协役
-2016-1-1 《莲君》
-》龙套
-2016-1-1 《夏天的向日葵》
-2016-1-1 《仓鼠缘》
-2016-1-1 《七年之痒》">
-<meta property="og:updated_time" content="2016-01-04T06:36:30.000Z">
+<meta property="og:description" content="RDD基础弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率
+两种创建rdd方式：来自外部数据集和来自对象集合
+lines=sc.textFile(&amp;apos;README.md&amp;apos;)
+lines=sc.parallelize([&amp;ap">
+<meta property="og:updated_time" content="2016-04-14T03:50:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2016广播剧整理">
-<meta name="twitter:description" content="主役协役
-2016-1-1 《莲君》
-》龙套
-2016-1-1 《夏天的向日葵》
-2016-1-1 《仓鼠缘》
-2016-1-1 《七年之痒》">
+<meta name="twitter:title" content="RDD编程">
+<meta name="twitter:description" content="RDD基础弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率
+两种创建rdd方式：来自外部数据集和来自对象集合
+lines=sc.textFile(&amp;apos;README.md&amp;apos;)
+lines=sc.parallelize([&amp;ap">
 
 
 
@@ -87,7 +81,7 @@
   };
 </script>
 
-  <title> 2016广播剧整理 | 太疯的飞屋 </title>
+  <title> RDD编程 | 太疯的飞屋 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -217,7 +211,7 @@
             
             
               
-                2016广播剧整理
+                RDD编程
               
             
           </h1>
@@ -226,8 +220,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-01-04T11:05:33+08:00" content="2016-01-04">
-              2016-01-04
+            <time itemprop="dateCreated" datetime="2016-04-14T10:35:42+08:00" content="2016-04-14">
+              2016-04-14
             </time>
           </span>
 
@@ -237,8 +231,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/04/2016广播剧整理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/04/2016广播剧整理/" itemprop="commentsCount"></span>
+                <a href="/2016/04/14/RDD编程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/RDD编程/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -257,12 +251,42 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="u4E3B_u5F79"><a href="#u4E3B_u5F79" class="headerlink" title="主役"></a>主役</h1><h1 id="u534F_u5F79"><a href="#u534F_u5F79" class="headerlink" title="协役"></a>协役</h1><ol>
-<li>2016-1-1 《莲君》</li>
-<li>》<h1 id="u9F99_u5957"><a href="#u9F99_u5957" class="headerlink" title="龙套"></a>龙套</h1></li>
-<li>2016-1-1 《夏天的向日葵》</li>
-<li>2016-1-1 《仓鼠缘》</li>
-<li>2016-1-1 《七年之痒》</li>
+        <span itemprop="articleBody"><h1 id="RDD_u57FA_u7840"><a href="#RDD_u57FA_u7840" class="headerlink" title="RDD基础"></a>RDD基础</h1><p>弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率</p>
+<p>两种创建rdd方式：来自外部数据集和来自对象集合</p>
+<pre><code>lines=sc.textFile(&apos;README.md&apos;)
+lines=sc.parallelize([&apos;good&apos;,&apos;bad&apos;])
+</code></pre><h1 id="u5E38_u89C1_u8F6C_u6362_u548C_u884C_u52A8_u64CD_u4F5C"><a href="#u5E38_u89C1_u8F6C_u6362_u548C_u884C_u52A8_u64CD_u4F5C" class="headerlink" title="常见转换和行动操作"></a>常见转换和行动操作</h1><h2 id="u9488_u5BF9_u5404_u4E2A_u5143_u7D20_u7684_u8F6C_u5316_u64CD_u4F5C"><a href="#u9488_u5BF9_u5404_u4E2A_u5143_u7D20_u7684_u8F6C_u5316_u64CD_u4F5C" class="headerlink" title="针对各个元素的转化操作"></a>针对各个元素的转化操作</h2><p>map,flatMap(传入函数返回可迭代对象)，filter(返回bool类型)</p>
+<h2 id="u4F2A_u96C6_u5408_u64CD_u4F5C"><a href="#u4F2A_u96C6_u5408_u64CD_u4F5C" class="headerlink" title="伪集合操作"></a>伪集合操作</h2><p>rdd.distinct():开销大，需要对所有数据通过网络进行混洗（shuffle）</p>
+<p>rdd.union():会有重</p>
+<p>rdd.interseciont(anoter):去重，单个rdd重复也去，也要shuffle,性能差</p>
+<p>rdd.subtract(anoter):shuffle</p>
+<p>rdd.sample(flalse,0,5,777): 采样，例子为50%，不放回</p>
+<p>rdd.takeSample(true,100,777)</p>
+<h2 id="u884C_u52A8_u64CD_u4F5C"><a href="#u884C_u52A8_u64CD_u4F5C" class="headerlink" title="行动操作"></a>行动操作</h2><p>rdd.reduce(lambda x,y :x+y):接受一个函数作为参数，这个函数要操作两个rdd的元素的数据并且返回一个同样类型的新元素，多用于计算rdd中所有元素的总和，元素的个数等。</p>
+<p>rdd.collect():要求能放进一台机器的内存中，因此多用于单元测试</p>
+<p>rdd.take(100): 尝试访问尽量少的分区，操作会得到一个不均衡集合，返回顺序不定</p>
+<p>rdd.top(100) 返回前100，可指定排序</p>
+<p>rdd.takeOrdered(100)(myordering)</p>
+<p>rdd.foreach(func) 对rdd的每个元素使用func,例如 rdd.foreach(println)</p>
+<h1 id="pair_rdd"><a href="#pair_rdd" class="headerlink" title="pair rdd"></a>pair rdd</h1><h2 id="for_each_pair_rdd"><a href="#for_each_pair_rdd" class="headerlink" title="for each pair rdd"></a>for each pair rdd</h2><p>rdd.reduceByKey(func): combine rdds with the same key,e.g. rdd.reduceByKey(lambda (x,y):x+y)</p>
+<p>rdd.groupByKey : e.g. rdd={(1,2),(3,4),(3,6)}<br>==&gt; {(1,[2]),(3,[4,6])}</p>
+<p>rdd.mapValues(func): imply func on each value with the key unchanged</p>
+<p>rdd.flatMapValues(func)</p>
+<p>rdd.keys(): return a new rdd consist of keys</p>
+<p>rdd.values()</p>
+<p>rdd.sortByKey() e.g. rdd.sortByKey(asending=true,numPartitions=None,keyFunc=labmda x:str(x))</p>
+<h2 id="for_two_pair_rdd"><a href="#for_two_pair_rdd" class="headerlink" title="for two pair rdd"></a>for two pair rdd</h2><p>rdd.subtractByKey(anoter)</p>
+<p>rdd.join(anoter): inner</p>
+<p>rdd.leftOuterJoin(anoter)</p>
+<p>rdd.rightOuterJoin(anoter)</p>
+<p>rdd.cogroup(anoter): e.g. rdd={(1,2),(3,4),(3,5)} anoter={(3,6)}  ==&gt; {(1,([2],[])),(3,([4,5],[6])}</p>
+<h2 id="combine_action"><a href="#combine_action" class="headerlink" title="combine action"></a>combine action</h2><p>combineByKey()?????</p>
+<p>##pair rdd action<br>countByKey</p>
+<p>collectAsMap()</p>
+<p>lookup(key)</p>
+<h1 id="u6027_u80FD_u63D0_u5347"><a href="#u6027_u80FD_u63D0_u5347" class="headerlink" title="性能提升"></a>性能提升</h1><ol>
+<li>rdd.textFile(‘sss’).repartition(10000）单个机器内存不够时，重新增加分区</li>
+<li>rdd.coalesce(100).saveAsTextFile</li>
 </ol>
 </span>
       
@@ -272,7 +296,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/广播剧/" rel="tag">#广播剧</a>
+            <a href="/tags/Spark/" rel="tag">#Spark</a>
           
         </div>
       
@@ -281,17 +305,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/30/Intersection/" rel="next" title="Line Segment Intersection">
-                <i class="fa fa-chevron-left"></i> Line Segment Intersection
+              <a href="/2016/03/18/spark在hive中的应用/" rel="next" title="spark在hive中的应用">
+                <i class="fa fa-chevron-left"></i> spark在hive中的应用
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/05/2016版一日规划/" rel="prev" title="2016版一日规划">
-                2016版一日规划 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -341,8 +361,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/01/04/2016广播剧整理/"
-           data-title="2016广播剧整理" data-url="http://yoursite.com/2016/01/04/2016广播剧整理/">
+      <div class="ds-thread" data-thread-key="2016/04/14/RDD编程/"
+           data-title="RDD编程" data-url="http://yoursite.com/2016/04/14/RDD编程/">
       </div>
     
   </div>
@@ -386,7 +406,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -432,7 +452,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u4E3B_u5F79"><span class="nav-number">1.</span> <span class="nav-text">主役</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u534F_u5F79"><span class="nav-number">2.</span> <span class="nav-text">协役</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u9F99_u5957"><span class="nav-number">3.</span> <span class="nav-text">龙套</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RDD_u57FA_u7840"><span class="nav-number">1.</span> <span class="nav-text">RDD基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5E38_u89C1_u8F6C_u6362_u548C_u884C_u52A8_u64CD_u4F5C"><span class="nav-number">2.</span> <span class="nav-text">常见转换和行动操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u9488_u5BF9_u5404_u4E2A_u5143_u7D20_u7684_u8F6C_u5316_u64CD_u4F5C"><span class="nav-number">2.1.</span> <span class="nav-text">针对各个元素的转化操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4F2A_u96C6_u5408_u64CD_u4F5C"><span class="nav-number">2.2.</span> <span class="nav-text">伪集合操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u884C_u52A8_u64CD_u4F5C"><span class="nav-number">2.3.</span> <span class="nav-text">行动操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pair_rdd"><span class="nav-number">3.</span> <span class="nav-text">pair rdd</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for_each_pair_rdd"><span class="nav-number">3.1.</span> <span class="nav-text">for each pair rdd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for_two_pair_rdd"><span class="nav-number">3.2.</span> <span class="nav-text">for two pair rdd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#combine_action"><span class="nav-number">3.3.</span> <span class="nav-text">combine action</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u6027_u80FD_u63D0_u5347"><span class="nav-number">4.</span> <span class="nav-text">性能提升</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
