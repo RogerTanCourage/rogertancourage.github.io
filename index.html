@@ -187,15 +187,6 @@
 
     
     
-      
-      
-        
-        
-        
-      
-
-      
-    
 
     
       
@@ -294,7 +285,7 @@ lines=sc.parallelize([&apos;good&apos;,&apos;bad&apos;])
 <p>rdd.rightOuterJoin(anoter)</p>
 <p>rdd.cogroup(anoter): e.g. rdd={(1,2),(3,4),(3,5)} anoter={(3,6)}  ==&gt; {(1,([2],[])),(3,([4,5],[6])}</p>
 <h2 id="combine_action"><a href="#combine_action" class="headerlink" title="combine action"></a>combine action</h2><p>combineByKey()?????</p>
-<p>##pair rdd action<br>countByKey</p>
+<h2 id="pair_rdd_action"><a href="#pair_rdd_action" class="headerlink" title="pair rdd action"></a>pair rdd action</h2><p>countByKey</p>
 <p>collectAsMap()</p>
 <p>lookup(key)</p>
 <h1 id="u6027_u80FD_u63D0_u5347"><a href="#u6027_u80FD_u63D0_u5347" class="headerlink" title="性能提升"></a>性能提升</h1><ol>
@@ -730,6 +721,121 @@ ALTER TABLE passenger ADD IF NOT EXISTS PARTITION(year=&apos;2016&apos;,month=&a
     //查询语句
     select * ...## 存储到hdfs某一个目录
 insert overwrite directory &apos;hdfs_dir/...&apos;
+select *...
+</code></pre><h2 id="u5B58_u50A8_u5230_u672C_u5730_u76EE_u5F55"><a href="#u5B58_u50A8_u5230_u672C_u5730_u76EE_u5F55" class="headerlink" title="存储到本地目录"></a>存储到本地目录</h2><pre><code>insert overwirte local directory &apos;local_dir/...&apos;
+select * ...
+</code></pre><h1 id="u5411hive_u8868_u88C5_u8F7D_u6570_u636E"><a href="#u5411hive_u8868_u88C5_u8F7D_u6570_u636E" class="headerlink" title="向hive表装载数据"></a>向hive表装载数据</h1><pre><code>//建表
+LOAD DATA (LOCAL) INPATH &apos;/dir/...&apos;
+OVERWRITE INTO TABLE tablename
+PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
+</code></pre><h1 id="u5176_u4ED6_u547D_u4EE4"><a href="#u5176_u4ED6_u547D_u4EE4" class="headerlink" title="其他命令"></a>其他命令</h1><p>describe table; drop table ;show tables;!ls;</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/16/hive总结/" itemprop="url">
+                  hive总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-03-16T11:30:43+08:00" content="2016-03-16">
+              2016-03-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/16/hive总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/hive总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C"><a href="#u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C" class="headerlink" title="创建(外)表的典型操作"></a>创建(外)表的典型操作</h1><pre><code>CREATE EXTERNAL TABEL &apos;passenger&apos;(
+    &apos;city_id&apos; INT COMMENT &apos;城市id&apos;,
+    ‘phone_number’ BIGINT COMMENT &apos;用户手机号&apos;
+)
+COMMENT &apos;用户表&apos;
+PARTITION BY(
+    &apos;year&apos; string,
+    &apos;month&apos; string,
+    &apos;day&apos; string
+)
+row format delimited
+field terminated by &quot;\t&quot;
+location &apos;hdfs: //---&apos;
+/*增加partition*/
+ALTER TABLE passenger ADD IF NOT EXISTS PARTITION(year=&apos;2016&apos;,month=&apos;03&apos;,day=&apos;11&apos;) location=&apos;2016/03/11&apos; 
+</code></pre><h1 id="u67E5_u8BE2_u7ED3_u679C_u7684_u5B58_u50A8"><a href="#u67E5_u8BE2_u7ED3_u679C_u7684_u5B58_u50A8" class="headerlink" title="查询结果的存储"></a>查询结果的存储</h1><h2 id="u5B58_u50A8_u5230hive_u8868"><a href="#u5B58_u50A8_u5230hive_u8868" class="headerlink" title="存储到hive表"></a>存储到hive表</h2><pre><code>//创建表
+insert overwrite table ***
+//查询语句
+select * ...
+</code></pre><h2 id="u5B58_u50A8_u5230hdfs_u67D0_u4E00_u4E2A_u76EE_u5F55"><a href="#u5B58_u50A8_u5230hdfs_u67D0_u4E00_u4E2A_u76EE_u5F55" class="headerlink" title="存储到hdfs某一个目录"></a>存储到hdfs某一个目录</h2><pre><code>insert overwrite directory &apos;hdfs_dir/...&apos;
 select *...
 </code></pre><h2 id="u5B58_u50A8_u5230_u672C_u5730_u76EE_u5F55"><a href="#u5B58_u50A8_u5230_u672C_u5730_u76EE_u5F55" class="headerlink" title="存储到本地目录"></a>存储到本地目录</h2><pre><code>insert overwirte local directory &apos;local_dir/...&apos;
 select * ...
