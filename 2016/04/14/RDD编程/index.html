@@ -63,7 +63,7 @@ lines=sc.parallelize([&amp;ap">
 两种创建rdd方式：来自外部数据集和来自对象集合
 lines=sc.textFile(&amp;apos;README.md&amp;apos;)
 lines=sc.parallelize([&amp;ap">
-<meta property="og:updated_time" content="2016-04-14T03:52:31.000Z">
+<meta property="og:updated_time" content="2016-04-19T07:52:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RDD编程">
 <meta name="twitter:description" content="RDD基础弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率
@@ -284,6 +284,20 @@ lines=sc.parallelize([&apos;good&apos;,&apos;bad&apos;])
 <h2 id="pair_rdd_action"><a href="#pair_rdd_action" class="headerlink" title="pair rdd action"></a>pair rdd action</h2><p>countByKey</p>
 <p>collectAsMap()</p>
 <p>lookup(key)</p>
+<h1 id="u7D2F_u52A0_u5668"><a href="#u7D2F_u52A0_u5668" class="headerlink" title="累加器"></a>累加器</h1><p>累加器相当于全局变量</p>
+<pre><code>file=sc.textFile(&apos;input.txt&apos;)
+#创建累机器并初始化为0
+blankLines=sc.accumulator(0)
+
+def extractCallSigns(line):
+    global blankLines #访问全局变量
+    if(lines==&quot;&quot;):
+        blankLines+=1
+    return line.split(&quot;\t&quot;)
+callSigns=file.flatMap(extractCallSigns)
+callSigns.saveAsTextFile(outputDir+&quot;/callsigns&quot;)
+print &quot;blank lins: %d&quot;%blankLines.values
+</code></pre><h1 id="dataframe"><a href="#dataframe" class="headerlink" title="dataframe"></a>dataframe</h1><p>generate df from sparkhive,each row is a object of ‘Row’,can convert tor rdd by ‘.rdd’ and you can get the item from the row by the index as well as the column name. e.g. x.pid ,x[0]</p>
 <h1 id="u6027_u80FD_u63D0_u5347"><a href="#u6027_u80FD_u63D0_u5347" class="headerlink" title="性能提升"></a>性能提升</h1><ol>
 <li>rdd.textFile(‘sss’).repartition(10000）单个机器内存不够时，重新增加分区</li>
 <li>rdd.coalesce(100).saveAsTextFile</li>
@@ -406,7 +420,7 @@ lines=sc.parallelize([&apos;good&apos;,&apos;bad&apos;])
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -452,7 +466,7 @@ lines=sc.parallelize([&apos;good&apos;,&apos;bad&apos;])
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RDD_u57FA_u7840"><span class="nav-number">1.</span> <span class="nav-text">RDD基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5E38_u89C1_u8F6C_u6362_u548C_u884C_u52A8_u64CD_u4F5C"><span class="nav-number">2.</span> <span class="nav-text">常见转换和行动操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u9488_u5BF9_u5404_u4E2A_u5143_u7D20_u7684_u8F6C_u5316_u64CD_u4F5C"><span class="nav-number">2.1.</span> <span class="nav-text">针对各个元素的转化操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4F2A_u96C6_u5408_u64CD_u4F5C"><span class="nav-number">2.2.</span> <span class="nav-text">伪集合操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u884C_u52A8_u64CD_u4F5C"><span class="nav-number">2.3.</span> <span class="nav-text">行动操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pair_rdd"><span class="nav-number">3.</span> <span class="nav-text">pair rdd</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for_each_pair_rdd"><span class="nav-number">3.1.</span> <span class="nav-text">for each pair rdd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for_two_pair_rdd"><span class="nav-number">3.2.</span> <span class="nav-text">for two pair rdd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#combine_action"><span class="nav-number">3.3.</span> <span class="nav-text">combine action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pair_rdd_action"><span class="nav-number">3.4.</span> <span class="nav-text">pair rdd action</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u6027_u80FD_u63D0_u5347"><span class="nav-number">4.</span> <span class="nav-text">性能提升</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RDD_u57FA_u7840"><span class="nav-number">1.</span> <span class="nav-text">RDD基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5E38_u89C1_u8F6C_u6362_u548C_u884C_u52A8_u64CD_u4F5C"><span class="nav-number">2.</span> <span class="nav-text">常见转换和行动操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u9488_u5BF9_u5404_u4E2A_u5143_u7D20_u7684_u8F6C_u5316_u64CD_u4F5C"><span class="nav-number">2.1.</span> <span class="nav-text">针对各个元素的转化操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4F2A_u96C6_u5408_u64CD_u4F5C"><span class="nav-number">2.2.</span> <span class="nav-text">伪集合操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u884C_u52A8_u64CD_u4F5C"><span class="nav-number">2.3.</span> <span class="nav-text">行动操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pair_rdd"><span class="nav-number">3.</span> <span class="nav-text">pair rdd</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for_each_pair_rdd"><span class="nav-number">3.1.</span> <span class="nav-text">for each pair rdd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for_two_pair_rdd"><span class="nav-number">3.2.</span> <span class="nav-text">for two pair rdd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#combine_action"><span class="nav-number">3.3.</span> <span class="nav-text">combine action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pair_rdd_action"><span class="nav-number">3.4.</span> <span class="nav-text">pair rdd action</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u7D2F_u52A0_u5668"><span class="nav-number">4.</span> <span class="nav-text">累加器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dataframe"><span class="nav-number">5.</span> <span class="nav-text">dataframe</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u6027_u80FD_u63D0_u5347"><span class="nav-number">6.</span> <span class="nav-text">性能提升</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
