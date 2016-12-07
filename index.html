@@ -1,8 +1,14 @@
 <!doctype html>
-<html class="theme-next   use-motion ">
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
@@ -21,18 +27,45 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -44,7 +77,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -63,28 +96,41 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: '',
-    sidebar: 'post',
-    motion: true
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
   };
 </script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/"/>
+
+
+
+
 
   <title> 太疯的飞屋 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
@@ -92,9 +138,18 @@
 
 
 
-  <div class="container one-column 
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
    page-home 
-">
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -123,25 +178,15 @@
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
           </a>
         </li>
       
@@ -149,7 +194,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -159,7 +204,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -167,40 +212,26 @@
       
 
       
-      
     </ul>
   
 
   
 </nav>
 
+
+
  </div>
     </header>
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
   <section id="posts" class="posts-expand">
-
-    
-
-    
-    
-      
-      
-        
-        
-        
-      
-
-      
-    
-
     
       
 
-  
   
 
   
@@ -208,6 +239,20 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/27/dbscan/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="roger">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="太疯的飞屋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="太疯的飞屋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -229,10 +274,19 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-09-27T14:28:27+08:00" content="2016-09-27">
-              2016-09-27
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2016-09-27T14:28:27+08:00">
+                2016-09-27
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -240,12 +294,19 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/09/27/dbscan/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/27/dbscan/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/27/dbscan/" itemprop="commentCount"></span>
                 </a>
               </span>
             
+          
+
+          
+
+          
+          
+
           
 
           
@@ -255,22 +316,29 @@
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">DBSCAN(D, eps, Minpts)</span><br><span class="line"></span><br><span class="line">	C=<span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> each unvisited point P <span class="keyword">in</span> dataset D</span><br><span class="line"></span><br><span class="line">		mark P <span class="keyword">as</span> visited</span><br><span class="line"></span><br><span class="line">		N=getNeighbors(P, eps)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> sizeOf(N) &lt; Mints</span><br><span class="line"></span><br><span class="line">			mark P <span class="keyword">as</span> NOISE</span><br><span class="line"></span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">			C=next cluster</span><br><span class="line"></span><br><span class="line">			expandCluster(P, N, C, eps, Minpts)</span><br><span class="line"></span><br><span class="line">expandCluster(P, N, C, eps, Minpts)</span><br><span class="line"></span><br><span class="line">	add P to cluster C</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> each point P’ <span class="keyword">in</span> N</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> P’ <span class="keyword">is</span> <span class="keyword">not</span> visited</span><br><span class="line"></span><br><span class="line">			mark P’ <span class="keyword">as</span> visited</span><br><span class="line"></span><br><span class="line">			N’=getNeighbors(P’, eps)</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> sizeOf(N’) &gt;= minPts</span><br><span class="line"></span><br><span class="line">				N = N joined <span class="keyword">with</span> N’</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> P’ <span class="keyword">is</span> <span class="keyword">not</span> yew cluster any cluster</span><br><span class="line"></span><br><span class="line">			add P’ to cluster C</span><br></pre></td></tr></table></figure>
+          
+            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">DBSCAN(D, eps, Minpts)</span><br><span class="line"></span><br><span class="line">	C=<span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> each unvisited point P <span class="keyword">in</span> dataset D</span><br><span class="line"></span><br><span class="line">		mark P <span class="keyword">as</span> visited</span><br><span class="line"></span><br><span class="line">		N=getNeighbors(P, eps)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> sizeOf(N) &lt; Mints</span><br><span class="line"></span><br><span class="line">			mark P <span class="keyword">as</span> NOISE</span><br><span class="line"></span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">			C=next cluster</span><br><span class="line"></span><br><span class="line">			expandCluster(P, N, C, eps, Minpts)</span><br><span class="line"></span><br><span class="line">expandCluster(P, N, C, eps, Minpts)</span><br><span class="line"></span><br><span class="line">	add P to cluster C</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> each point P’ <span class="keyword">in</span> N</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> P’ <span class="keyword">is</span> <span class="keyword">not</span> visited</span><br><span class="line"></span><br><span class="line">			mark P’ <span class="keyword">as</span> visited</span><br><span class="line"></span><br><span class="line">			N’=getNeighbors(P’, eps)</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> sizeOf(N’) &gt;= minPts</span><br><span class="line"></span><br><span class="line">				N = N joined <span class="keyword">with</span> N’</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> P’ <span class="keyword">is</span> <span class="keyword">not</span> yew cluster any cluster</span><br><span class="line"></span><br><span class="line">			add P’ to cluster C</span><br></pre></td></tr></table></figure>
 
-            
-          </span>
+          
         
       
     </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -289,13 +357,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/21/hello-world/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="roger">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="太疯的飞屋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="太疯的飞屋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -317,10 +398,19 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-09-21T13:52:04+08:00" content="2016-09-21">
-              2016-09-21
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2016-09-21T13:52:04+08:00">
+                2016-09-21
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -328,12 +418,19 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/09/21/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/21/hello-world/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/21/hello-world/" itemprop="commentCount"></span>
                 </a>
               </span>
             
+          
+
+          
+
+          
+          
+
           
 
           
@@ -343,16 +440,15 @@
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+          
+            <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>The Arithmetic mean is equal is $\frac{1}{n} \sum_{i=i}^{n} x_{i}$, or the sumation of n numbers divided by n.</p>
 <p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
@@ -363,11 +459,19 @@
 <h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
-            
-          </span>
+          
         
       
     </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -386,13 +490,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/04/14/RDD编程/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="roger">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="太疯的飞屋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="太疯的飞屋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -414,10 +531,19 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-04-14T10:35:42+08:00" content="2016-04-14">
-              2016-04-14
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2016-04-14T10:35:42+08:00">
+                2016-04-14
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -425,12 +551,19 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/04/14/RDD编程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/RDD编程/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/RDD编程/" itemprop="commentCount"></span>
                 </a>
               </span>
             
+          
+
+          
+
+          
+          
+
           
 
           
@@ -440,16 +573,15 @@
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <h1 id="RDD_u57FA_u7840"><a href="#RDD_u57FA_u7840" class="headerlink" title="RDD基础"></a>RDD基础</h1><p>弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率</p>
+          
+            <h1 id="RDD_u57FA_u7840"><a href="#RDD_u57FA_u7840" class="headerlink" title="RDD基础"></a>RDD基础</h1><p>弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率</p>
 <p>两种创建rdd方式：来自外部数据集和来自对象集合</p>
 <pre><code>lines=sc.textFile(&apos;README.md&apos;)
 lines=sc.parallelize([&apos;good&apos;,&apos;bad&apos;])
@@ -501,11 +633,19 @@ print &quot;blank lins: %d&quot;%blankLines.values
 <li>rdd.coalesce(100).saveAsTextFile</li>
 </ol>
 
-            
-          </span>
+          
         
       
     </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -524,13 +664,26 @@ print &quot;blank lins: %d&quot;%blankLines.values
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/18/spark在hive中的应用/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="roger">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="太疯的飞屋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="太疯的飞屋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -552,10 +705,19 @@ print &quot;blank lins: %d&quot;%blankLines.values
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-03-18T21:30:26+08:00" content="2016-03-18">
-              2016-03-18
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2016-03-18T21:30:26+08:00">
+                2016-03-18
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -563,12 +725,19 @@ print &quot;blank lins: %d&quot;%blankLines.values
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/03/18/spark在hive中的应用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/18/spark在hive中的应用/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/18/spark在hive中的应用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
+          
+
+          
+
+          
+          
+
           
 
           
@@ -578,16 +747,15 @@ print &quot;blank lins: %d&quot;%blankLines.values
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <h1 id="u8FDE_u63A5spark_sql"><a href="#u8FDE_u63A5spark_sql" class="headerlink" title="连接spark sql"></a>连接spark sql</h1><p>sparksql提供一种特殊的rdd，叫做schemerdd,schemerdd是存放row对象的rdd，每个row对象代表一行记录。附带包含每列的类型信息。Row类型只是对基本数据类型的数组的封装。schemerdd开起来和普通的rdd很像，但是可以利用结构信息更加高效的存储数据。scheme可以从外部数据创建，也可以从查询结果或者普通rdd中创建。</p>
+          
+            <h1 id="u8FDE_u63A5spark_sql"><a href="#u8FDE_u63A5spark_sql" class="headerlink" title="连接spark sql"></a>连接spark sql</h1><p>sparksql提供一种特殊的rdd，叫做schemerdd,schemerdd是存放row对象的rdd，每个row对象代表一行记录。附带包含每列的类型信息。Row类型只是对基本数据类型的数组的封装。schemerdd开起来和普通的rdd很像，但是可以利用结构信息更加高效的存储数据。scheme可以从外部数据创建，也可以从查询结果或者普通rdd中创建。</p>
 <p>SchemeRDD可以使用已有的rdd转化操作，比如map()和filter().furterhmore可以把任意的schemerdd注册为临时表（HiveContext.registerTempTable）</p>
 <p>Row对象表示schemerdd中的记录，其本质就是一个定长的字段数组，可以使用对应的getType()方法，比如getString(0)会把字段0按照字符串返回。</p>
 <pre><code>//访问toptweet这个schemerdd中的text列（第一列）
@@ -604,11 +772,19 @@ import hiveCtx._
 val sc=new SparkContext(...)
 val hiveCtx=new HiveContext(sc)
 </code></pre>
-            
-          </span>
+          
         
       
     </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -627,13 +803,26 @@ val hiveCtx=new HiveContext(sc)
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/16/spark初级/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="roger">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="太疯的飞屋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="太疯的飞屋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -655,10 +844,19 @@ val hiveCtx=new HiveContext(sc)
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-03-16T15:09:56+08:00" content="2016-03-16">
-              2016-03-16
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2016-03-16T15:09:56+08:00">
+                2016-03-16
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -666,12 +864,19 @@ val hiveCtx=new HiveContext(sc)
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/03/16/spark初级/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/spark初级/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/spark初级/" itemprop="commentCount"></span>
                 </a>
               </span>
             
+          
+
+          
+
+          
+          
+
           
 
           
@@ -681,16 +886,15 @@ val hiveCtx=new HiveContext(sc)
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <h1 id="u9884_u5907"><a href="#u9884_u5907" class="headerlink" title="预备"></a>预备</h1><p>从国内某约车软件实际工作出发，学习spark，特别感谢倚天同学指导。工作分了两部分，一部分是从hive表提取数据，第二部分是对本地数据进行统计。从hive提取数据需要hivesql相关知识，所以我先从第二份开始。</p>
+          
+            <h1 id="u9884_u5907"><a href="#u9884_u5907" class="headerlink" title="预备"></a>预备</h1><p>从国内某约车软件实际工作出发，学习spark，特别感谢倚天同学指导。工作分了两部分，一部分是从hive表提取数据，第二部分是对本地数据进行统计。从hive提取数据需要hivesql相关知识，所以我先从第二份开始。</p>
 <h1 id="spark__u672C_u5730_u6570_u636E_u7EDF_u8BA1"><a href="#spark__u672C_u5730_u6570_u636E_u7EDF_u8BA1" class="headerlink" title="spark 本地数据统计"></a>spark 本地数据统计</h1><pre><code>//指明包的位置，类似于java
 package com.user
 
@@ -736,11 +940,19 @@ val dataExtracted=sqlContext.sql(sqlText).map{
     case Row(pID: Long,pPhone: String,oId: Long,sCost:Double,aCost: Double)=&gt;pId.toString+&quot;\t&quot;+pPhone+&quot;\t&quot;
 }.repartition(5).saveAsTextFile(FILE_LOCATION)
 </code></pre>
-            
-          </span>
+          
         
       
     </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -759,13 +971,26 @@ val dataExtracted=sqlContext.sql(sqlText).map{
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/16/test-md/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="roger">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="太疯的飞屋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="太疯的飞屋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -787,10 +1012,19 @@ val dataExtracted=sqlContext.sql(sqlText).map{
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-03-16T13:43:55+08:00" content="2016-03-16">
-              2016-03-16
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2016-03-16T13:43:55+08:00">
+                2016-03-16
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -798,12 +1032,19 @@ val dataExtracted=sqlContext.sql(sqlText).map{
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/03/16/test-md/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/test-md/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/test-md/" itemprop="commentCount"></span>
                 </a>
               </span>
             
+          
+
+          
+
+          
+          
+
           
 
           
@@ -813,16 +1054,15 @@ val dataExtracted=sqlContext.sql(sqlText).map{
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <h1 id="u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C"><a href="#u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C" class="headerlink" title="创建(外)表的典型操作"></a>创建(外)表的典型操作</h1><pre><code>CREATE EXTERNAL TABEL &apos;passenger&apos;(
+          
+            <h1 id="u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C"><a href="#u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C" class="headerlink" title="创建(外)表的典型操作"></a>创建(外)表的典型操作</h1><pre><code>CREATE EXTERNAL TABEL &apos;passenger&apos;(
     &apos;city_id&apos; INT COMMENT &apos;城市id&apos;,
     ‘phone_number’ BIGINT COMMENT &apos;用户手机号&apos;
 )
@@ -851,11 +1091,19 @@ OVERWRITE INTO TABLE tablename
 PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 </code></pre><h1 id="u5176_u4ED6_u547D_u4EE4"><a href="#u5176_u4ED6_u547D_u4EE4" class="headerlink" title="其他命令"></a>其他命令</h1><p>describe table; drop table ;show tables;!ls;</p>
 
-            
-          </span>
+          
         
       
     </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -874,13 +1122,26 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/16/hive总结/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="roger">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="太疯的飞屋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="太疯的飞屋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -902,10 +1163,19 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-03-16T11:30:43+08:00" content="2016-03-16">
-              2016-03-16
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2016-03-16T11:30:43+08:00">
+                2016-03-16
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -913,12 +1183,19 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/03/16/hive总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/hive总结/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/hive总结/" itemprop="commentCount"></span>
                 </a>
               </span>
             
+          
+
+          
+
+          
+          
+
           
 
           
@@ -928,16 +1205,15 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <h1 id="u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C"><a href="#u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C" class="headerlink" title="创建(外)表的典型操作"></a>创建(外)表的典型操作</h1><pre><code>CREATE EXTERNAL TABEL &apos;passenger&apos;(
+          
+            <h1 id="u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C"><a href="#u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C" class="headerlink" title="创建(外)表的典型操作"></a>创建(外)表的典型操作</h1><pre><code>CREATE EXTERNAL TABEL &apos;passenger&apos;(
     &apos;city_id&apos; INT COMMENT &apos;城市id&apos;,
     ‘phone_number’ BIGINT COMMENT &apos;用户手机号&apos;
 )
@@ -966,11 +1242,19 @@ OVERWRITE INTO TABLE tablename
 PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 </code></pre><h1 id="u5176_u4ED6_u547D_u4EE4"><a href="#u5176_u4ED6_u547D_u4EE4" class="headerlink" title="其他命令"></a>其他命令</h1><p>describe table; drop table ;show tables;!ls;</p>
 
-            
-          </span>
+          
         
       
     </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -989,13 +1273,26 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/05/2016读书总结/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="roger">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="太疯的飞屋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="太疯的飞屋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -1017,10 +1314,19 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-01-05T21:57:39+08:00" content="2016-01-05">
-              2016-01-05
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2016-01-05T21:57:39+08:00">
+                2016-01-05
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -1028,12 +1334,19 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/01/05/2016读书总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/05/2016读书总结/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/05/2016读书总结/" itemprop="commentCount"></span>
                 </a>
               </span>
             
+          
+
+          
+
+          
+          
+
           
 
           
@@ -1043,22 +1356,29 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <h1 id="2015_u5E74_u90E8_u5206_u8BFB_u4E66_u6E05_u5355"><a href="#2015_u5E74_u90E8_u5206_u8BFB_u4E66_u6E05_u5355" class="headerlink" title="2015年部分读书清单"></a>2015年部分读书清单</h1><p>岛上书店、时间守护着、浪潮之巅、黑客与画家、稀缺、富家美国</p>
+          
+            <h1 id="2015_u5E74_u90E8_u5206_u8BFB_u4E66_u6E05_u5355"><a href="#2015_u5E74_u90E8_u5206_u8BFB_u4E66_u6E05_u5355" class="headerlink" title="2015年部分读书清单"></a>2015年部分读书清单</h1><p>岛上书店、时间守护着、浪潮之巅、黑客与画家、稀缺、富家美国</p>
 <h1 id="2016_u5E74_u8BFB_u4E66_u603B_u7ED3"><a href="#2016_u5E74_u8BFB_u4E66_u603B_u7ED3" class="headerlink" title="2016年读书总结"></a>2016年读书总结</h1>
-            
-          </span>
+          
         
       
     </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -1077,13 +1397,26 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/05/2016版一日规划/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="roger">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="太疯的飞屋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="太疯的飞屋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -1105,10 +1438,19 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-01-05T11:39:21+08:00" content="2016-01-05">
-              2016-01-05
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2016-01-05T11:39:21+08:00">
+                2016-01-05
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -1116,12 +1458,19 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/01/05/2016版一日规划/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/05/2016版一日规划/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/05/2016版一日规划/" itemprop="commentCount"></span>
                 </a>
               </span>
             
+          
+
+          
+
+          
+          
+
           
 
           
@@ -1131,16 +1480,15 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <h1 id="u4E00_u65E5_u4F5C_u606F"><a href="#u4E00_u65E5_u4F5C_u606F" class="headerlink" title="一日作息"></a>一日作息</h1><ol>
+          
+            <h1 id="u4E00_u65E5_u4F5C_u606F"><a href="#u4E00_u65E5_u4F5C_u606F" class="headerlink" title="一日作息"></a>一日作息</h1><ol>
 <li>6:50起床</li>
 <li>喝水，厕所，温水洗漱，7：20出门</li>
 <li>早餐：鸡蛋，粥</li>
@@ -1176,11 +1524,19 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 </li>
 </ol>
 
-            
-          </span>
+          
         
       
     </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -1199,13 +1555,26 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/12/30/Intersection/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="roger">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="太疯的飞屋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="太疯的飞屋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -1227,10 +1596,19 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-12-30T15:30:39+08:00" content="2015-12-30">
-              2015-12-30
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Дата создания записи" itemprop="dateCreated datePublished" datetime="2015-12-30T15:30:39+08:00">
+                2015-12-30
+              </time>
+            
+
+            
+
+            
           </span>
 
           
@@ -1238,12 +1616,19 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2015/12/30/Intersection/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/30/Intersection/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/30/Intersection/" itemprop="commentCount"></span>
                 </a>
               </span>
             
+          
+
+          
+
+          
+          
+
           
 
           
@@ -1253,16 +1638,15 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>Input: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$<br>Output: All <em>intersection points</em> between segements in S<br>In particular,we assume:  </p>
+          
+            <h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>Input: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$<br>Output: All <em>intersection points</em> between segements in S<br>In particular,we assume:  </p>
 <ol>
 <li>The x-coordinates of the endpoints and intersection points are all distinct.(This implies that no line segment is vertical).</li>
 <li>If two segments intersect, then they intersect in a single point(they are not collinear).</li>
@@ -1288,11 +1672,19 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 </li>
 </ol>
 
-            
-          </span>
+          
         
       
     </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -1308,7 +1700,6 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 
 
     
-
   </section>
 
   
@@ -1318,17 +1709,15 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 
 
 
+          </div>
+          
+
+
+          
+
         </div>
-
         
-
-
-        
-
-      </div>
-
-      
-        
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -1345,12 +1734,14 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 
       
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/avatar.jpg" alt="roger" itemprop="image"/>
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="roger" />
           <p class="site-author-name" itemprop="name">roger</p>
+          <p class="site-description motion-element" itemprop="description"></p>
         </div>
-        <p class="site-description motion-element" itemprop="description"></p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
@@ -1359,19 +1750,23 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
             </a>
           </div>
 
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">2</span>
-              <span class="site-state-item-name">分类</span>
-              </a>
-          </div>
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">8</span>
-              <span class="site-state-item-name">标签</span>
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
               </a>
-          </div>
+            </div>
+          
 
         </nav>
 
@@ -1384,9 +1779,11 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
         
         
 
-        <div class="links-of-author motion-element">
-          
-        </div>
+        
+        
+
+        
+
 
       </section>
 
@@ -1396,7 +1793,8 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
   </aside>
 
 
-      
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
@@ -1406,37 +1804,96 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
   &copy; 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">roger</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT
+    NexT.Muse
   </a>
 </div>
 
 
+        
 
+        
       </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
   </div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
 
   
   
 
   
-    
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
 
   
     
@@ -1454,61 +1911,32 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+
+  
     
-     
-
-
     
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
   
 
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
 
 
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-  
-
-  <script type="text/javascript" src="/js/bootstrap.js"></script>
-
-  
-  
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-  </script>
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-      for (i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-    });
-  </script>
-
-  
-    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
-    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
-  
 
 
   
   
+
+  
+
+  
+
+  
+
+  
+
 
 </body>
 </html>
