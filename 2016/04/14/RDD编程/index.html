@@ -86,23 +86,20 @@
 
 <meta name="description" content="RDD基础弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率
 两种创建rdd方式：来自外部数据集和来自对象集合
-lines=sc.textFile(&amp;apos;README.md&amp;apos;)
-lines=sc.parallelize([&amp;ap">
+12lines=sc.textFile(&apos;README.md&apos;)lines=sc.parallelize([&apos;good&apos;,&apos;bad&apos;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RDD编程">
 <meta property="og:url" content="http://yoursite.com/2016/04/14/RDD编程/index.html">
 <meta property="og:site_name" content="Just Roger">
 <meta property="og:description" content="RDD基础弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率
 两种创建rdd方式：来自外部数据集和来自对象集合
-lines=sc.textFile(&amp;apos;README.md&amp;apos;)
-lines=sc.parallelize([&amp;ap">
-<meta property="og:updated_time" content="2016-04-21T02:39:45.000Z">
+12lines=sc.textFile(&apos;README.md&apos;)lines=sc.parallelize([&apos;good&apos;,&apos;bad&apos;">
+<meta property="og:updated_time" content="2017-01-29T13:35:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RDD编程">
 <meta name="twitter:description" content="RDD基础弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率
 两种创建rdd方式：来自外部数据集和来自对象集合
-lines=sc.textFile(&amp;apos;README.md&amp;apos;)
-lines=sc.parallelize([&amp;ap">
+12lines=sc.textFile(&apos;README.md&apos;)lines=sc.parallelize([&apos;good&apos;,&apos;bad&apos;">
 
 
 
@@ -347,9 +344,8 @@ lines=sc.parallelize([&amp;ap">
       
         <h1 id="RDD_u57FA_u7840"><a href="#RDD_u57FA_u7840" class="headerlink" title="RDD基础"></a>RDD基础</h1><p>弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率</p>
 <p>两种创建rdd方式：来自外部数据集和来自对象集合</p>
-<pre><code>lines=sc.textFile(&apos;README.md&apos;)
-lines=sc.parallelize([&apos;good&apos;,&apos;bad&apos;])
-</code></pre><h1 id="u5E38_u89C1_u8F6C_u6362_u548C_u884C_u52A8_u64CD_u4F5C"><a href="#u5E38_u89C1_u8F6C_u6362_u548C_u884C_u52A8_u64CD_u4F5C" class="headerlink" title="常见转换和行动操作"></a>常见转换和行动操作</h1><h2 id="u9488_u5BF9_u5404_u4E2A_u5143_u7D20_u7684_u8F6C_u5316_u64CD_u4F5C"><a href="#u9488_u5BF9_u5404_u4E2A_u5143_u7D20_u7684_u8F6C_u5316_u64CD_u4F5C" class="headerlink" title="针对各个元素的转化操作"></a>针对各个元素的转化操作</h2><p>map,flatMap(传入函数返回可迭代对象)，filter(返回bool类型)</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lines=sc.<span class="function"><span class="title">textFile</span><span class="params">(<span class="string">'README.md'</span>)</span></span></span><br><span class="line">lines=sc.<span class="function"><span class="title">parallelize</span><span class="params">([<span class="string">'good'</span>,<span class="string">'bad'</span>])</span></span></span><br></pre></td></tr></table></figure>
+<h1 id="u5E38_u89C1_u8F6C_u6362_u548C_u884C_u52A8_u64CD_u4F5C"><a href="#u5E38_u89C1_u8F6C_u6362_u548C_u884C_u52A8_u64CD_u4F5C" class="headerlink" title="常见转换和行动操作"></a>常见转换和行动操作</h1><h2 id="u9488_u5BF9_u5404_u4E2A_u5143_u7D20_u7684_u8F6C_u5316_u64CD_u4F5C"><a href="#u9488_u5BF9_u5404_u4E2A_u5143_u7D20_u7684_u8F6C_u5316_u64CD_u4F5C" class="headerlink" title="针对各个元素的转化操作"></a>针对各个元素的转化操作</h2><p>map,flatMap(传入函数返回可迭代对象)，filter(返回bool类型)</p>
 <h2 id="u4F2A_u96C6_u5408_u64CD_u4F5C"><a href="#u4F2A_u96C6_u5408_u64CD_u4F5C" class="headerlink" title="伪集合操作"></a>伪集合操作</h2><p>rdd.distinct():开销大，需要对所有数据通过网络进行混洗（shuffle）</p>
 <p>rdd.union():会有重</p>
 <p>rdd.interseciont(anoter):去重，单个rdd重复也去，也要shuffle,性能差</p>
@@ -363,7 +359,8 @@ lines=sc.parallelize([&apos;good&apos;,&apos;bad&apos;])
 <p>rdd.takeOrdered(100)(myordering)</p>
 <p>rdd.foreach(func) 对rdd的每个元素使用func,例如 rdd.foreach(println)</p>
 <h1 id="pair_rdd"><a href="#pair_rdd" class="headerlink" title="pair rdd"></a>pair rdd</h1><h2 id="for_each_pair_rdd"><a href="#for_each_pair_rdd" class="headerlink" title="for each pair rdd"></a>for each pair rdd</h2><p>rdd.reduceByKey(func): combine rdds with the same key,e.g. rdd.reduceByKey(lambda (x,y):x+y)</p>
-<p>rdd.groupByKey : e.g. rdd={(1,2),(3,4),(3,6)}<br>==&gt; {(1,[2]),(3,[4,6])}</p>
+<p>rdd.groupByKey : e.g. rdd={(1,2),(3,4),(3,6)}</p>
+<p>==&gt; {(1,[2]),(3,[4,6])}</p>
 <p>rdd.mapValues(func): imply func on each value with the key unchanged</p>
 <p>rdd.flatMapValues(func)</p>
 <p>rdd.keys(): return a new rdd consist of keys</p>
@@ -379,19 +376,10 @@ lines=sc.parallelize([&apos;good&apos;,&apos;bad&apos;])
 <p>collectAsMap()</p>
 <p>lookup(key)</p>
 <h1 id="u7D2F_u52A0_u5668"><a href="#u7D2F_u52A0_u5668" class="headerlink" title="累加器"></a>累加器</h1><p>累加器相当于全局变量</p>
-<pre><code>file=sc.textFile(&apos;input.txt&apos;)
-#创建累机器并初始化为0
-blankLines=sc.accumulator(0)
-
-def extractCallSigns(line):
-    global blankLines #访问全局变量
-    if(lines==&quot;&quot;):
-        blankLines+=1
-    return line.split(&quot;\t&quot;)
-callSigns=file.flatMap(extractCallSigns)
-callSigns.saveAsTextFile(outputDir+&quot;/callsigns&quot;)
-print &quot;blank lins: %d&quot;%blankLines.values
-</code></pre><h1 id="dataframe"><a href="#dataframe" class="headerlink" title="dataframe"></a>dataframe</h1><p>generate df from sparkhive,each row is a object of ‘Row’,can convert tor rdd by ‘.rdd’ and you can get the item from the row by the index as well as the column name. e.g. x.pid ,x[0]</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">file=sc.<span class="function"><span class="title">textFile</span><span class="params">(<span class="string">'input.txt'</span>)</span></span></span><br><span class="line">#创建累机器并初始化为<span class="number">0</span></span><br><span class="line">blankLines=sc.<span class="function"><span class="title">accumulator</span><span class="params">(<span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<p>​    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extractCallSigns</span><span class="params">(line)</span>:</span></span><br><span class="line">	<span class="keyword">global</span> blankLines <span class="comment">#访问全局变量</span></span><br><span class="line">	<span class="keyword">if</span>(lines==<span class="string">""</span>):</span><br><span class="line">		blankLines+=<span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> line.split(<span class="string">"\t"</span>)</span><br><span class="line">callSigns=file.flatMap(extractCallSigns)</span><br><span class="line">callSigns.saveAsTextFile(outputDir+<span class="string">"/callsigns"</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"blank lins: %d"</span>%blankLines.values</span><br></pre></td></tr></table></figure>
+<h1 id="dataframe"><a href="#dataframe" class="headerlink" title="dataframe"></a>dataframe</h1><p>generate df from sparkhive,each row is a object of ‘Row’,can convert tor rdd by ‘.rdd’ and you can get the item from the row by the index as well as the column name. e.g. x.pid ,x[0]</p>
 <h1 id="u6027_u80FD_u63D0_u5347"><a href="#u6027_u80FD_u63D0_u5347" class="headerlink" title="性能提升"></a>性能提升</h1><ol>
 <li>rdd.textFile(‘sss’).repartition(10000）单个机器内存不够时，重新增加分区</li>
 <li>rdd.coalesce(100).saveAsTextFile</li>
@@ -438,8 +426,8 @@ print &quot;blank lins: %d&quot;%blankLines.values
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/29/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/02/schedue-for-2017/" rel="prev" title="schedue for 2017">
+                schedue for 2017 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -509,7 +509,9 @@
       
         
           
-            <h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>Input: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$<br>Output: All <em>intersection points</em> between segements in S<br>In particular,we assume:  </p>
+            <h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>Input: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$  </p>
+<p>Output: All <em>intersection points</em> between segements in S  </p>
+<p>In particular,we assume:  </p>
 <ol>
 <li>The x-coordinates of the endpoints and intersection points are all distinct.(This implies that no line segment is vertical).</li>
 <li>If two segments intersect, then they intersect in a single point(they are not collinear).</li>
@@ -526,11 +528,25 @@
 <li>future event points: priority queue ordered from left to right by x-coordinates</li>
 </ol>
 <h2 id="Alg"><a href="#Alg" class="headerlink" title="Alg"></a>Alg</h2><ol>
-<li>Insert all of the points o the line segments of $S$ into the event queue. The initial sweep-line status is empty.</li>
-<li>while the event queue is nonempty, extract the next event in the queue.There are there cases,depending on the type of the event:<ul>
-<li><em>Left endpoints</em>:<br>  (a)insert this line segments $s$ into the sweep-line status,based on the y-coordinats of its left endpoints<br>  (b)Let $S$ and $s’$ be the segments immediately above and below $s$ on the sweep line. If there is an event associated with the pair, remove it from the event queue.<br>  (c)Test for intersection between $s$ and $s’$ and between $s$ and $s’’$ to the right of the sweep line. If so, add the correspoing event(s) to the event queue.</li>
-<li><em>Right endpoint</em>:<br>  (a)Let $s$ and $s’$ be the segments immediately above and below the sweep line.<br>  (b)Delete segments $s$ from the sweep line status.<br>  (c)Test for intersections between $s$ and $s’$ to the right of the sweep line. If so, add the corresponding event to the event queue.</li>
-<li><em>Intersecion</em>:<br>  (a) report this intersection.<br>  (b) Let $s$ and $s’$ be the two intersecting segments. Swap these two line segments in the sweep-line status.<br>  (c) As a result,$s$ and $s’$ have changed which segments are immediately above and below them. Remove any old events due to adjacencies that have ended and insert any new intersection events form adjacencies that have been created.</li>
+<li><p>Insert all of the points o the line segments of $S$ into the event queue. The initial sweep-line status is empty.</p>
+</li>
+<li><p>while the event queue is nonempty, extract the next event in the queue.There are there cases,depending on the type of the event:</p>
+<ul>
+<li><p><em>Left endpoints</em>:</p>
+<p>  (a)insert this line segments $s$ into the sweep-line status,based on the y-coordinats of its left endpoints  </p>
+<p>  (b)Let $S$ and $s’$ be the segments immediately above and below $s$ on the sweep line. If there is an event associated with the pair, remove it from the event queue.  </p>
+<p>  (c)Test for intersection between $s$ and $s’$ and between $s$ and $s’’$ to the right of the sweep line. If so, add the correspoing event(s) to the event queue.</p>
+</li>
+<li><p><em>Right endpoint</em>:</p>
+<p>  (a)Let $s$ and $s’$ be the segments immediately above and below the sweep line.  </p>
+<p>  (b)Delete segments $s$ from the sweep line status.  </p>
+<p>  (c)Test for intersections between $s$ and $s’$ to the right of the sweep line. If so, add the corresponding event to the event queue.</p>
+</li>
+<li><p><em>Intersecion</em>:</p>
+<p>  (a) report this intersection.  </p>
+<p>  (b) Let $s$ and $s’$ be the two intersecting segments. Swap these two line segments in the sweep-line status.  </p>
+<p>  (c) As a result,$s$ and $s’$ have changed which segments are immediately above and below them. Remove any old events due to adjacencies that have ended and insert any new intersection events form adjacencies that have been created.</p>
+</li>
 </ul>
 </li>
 </ol>
