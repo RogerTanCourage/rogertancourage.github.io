@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content=",,,,," />
 
 
 
@@ -84,49 +84,19 @@
 
 
 
-<meta name="description" content="&amp;lt;!DOCTYPE HTML&amp;gt;
-
-
-  
-  
-  
-  
-
-
-
-
-&amp;lt;!--  --&amp;gt;">
+<meta name="description" content="连接spark sqlsparksql提供一种特殊的rdd，叫做schemerdd,schemerdd是存放row对象的rdd，每个row对象代表一行记录。附带包含每列的类型信息。Row类型只是对基本数据类型的数组的封装。schemerdd开起来和普通的rdd很像，但是可以利用结构信息更加高效的存储数据。scheme可以从外部数据创建，也可以从查询结果或者普通rdd中创建。
+SchemeRDD可以">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Just Roger">
-<meta property="og:url" content="http://yoursite.com/404.html">
+<meta property="og:title" content="spark在hive中的应用">
+<meta property="og:url" content="http://yoursite.com/backup/spark在hive中的应用.html">
 <meta property="og:site_name" content="Just Roger">
-<meta property="og:description" content="&amp;lt;!DOCTYPE HTML&amp;gt;
-
-
-  
-  
-  
-  
-
-
-
-
-&amp;lt;!--  --&amp;gt;">
-<meta property="og:updated_time" content="2016-10-23T06:58:18.000Z">
+<meta property="og:description" content="连接spark sqlsparksql提供一种特殊的rdd，叫做schemerdd,schemerdd是存放row对象的rdd，每个row对象代表一行记录。附带包含每列的类型信息。Row类型只是对基本数据类型的数组的封装。schemerdd开起来和普通的rdd很像，但是可以利用结构信息更加高效的存储数据。scheme可以从外部数据创建，也可以从查询结果或者普通rdd中创建。
+SchemeRDD可以">
+<meta property="og:updated_time" content="2016-03-19T10:21:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Just Roger">
-<meta name="twitter:description" content="&amp;lt;!DOCTYPE HTML&amp;gt;
-
-
-  
-  
-  
-  
-
-
-
-
-&amp;lt;!--  --&amp;gt;">
+<meta name="twitter:title" content="spark在hive中的应用">
+<meta name="twitter:description" content="连接spark sqlsparksql提供一种特殊的rdd，叫做schemerdd,schemerdd是存放row对象的rdd，每个row对象代表一行记录。附带包含每列的类型信息。Row类型只是对基本数据类型的数组的封装。schemerdd开起来和普通的rdd很像，但是可以利用结构信息更加高效的存储数据。scheme可以从外部数据创建，也可以从查询结果或者普通rdd中创建。
+SchemeRDD可以">
 
 
 
@@ -154,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/404.html"/>
+  <link rel="canonical" href="http://yoursite.com/backup/spark在hive中的应用.html"/>
 
 
 
@@ -164,7 +134,7 @@
   
 
   
-     | Just Roger
+    spark在hive中的应用 | Just Roger
   
 </title>
 </head>
@@ -279,7 +249,7 @@
   <div id="posts" class="posts-expand">
   <header class="post-header">
 
-	<h2 class="post-title" itemprop="name headline"></h2>
+	<h2 class="post-title" itemprop="name headline">spark在hive中的应用</h2>
 
 
 
@@ -287,21 +257,23 @@
 
     
     
-      <!DOCTYPE HTML>
-<html>
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=utf-8;">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="robots" content="all">
-  <meta name="robots" content="index,follow">
-</head>
-<body>
-<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8"></script>
+      <h1 id="u8FDE_u63A5spark_sql"><a href="#u8FDE_u63A5spark_sql" class="headerlink" title="连接spark sql"></a>连接spark sql</h1><p>sparksql提供一种特殊的rdd，叫做schemerdd,schemerdd是存放row对象的rdd，每个row对象代表一行记录。附带包含每列的类型信息。Row类型只是对基本数据类型的数组的封装。schemerdd开起来和普通的rdd很像，但是可以利用结构信息更加高效的存储数据。scheme可以从外部数据创建，也可以从查询结果或者普通rdd中创建。</p>
+<p>SchemeRDD可以使用已有的rdd转化操作，比如map()和filter().furterhmore可以把任意的schemerdd注册为临时表（HiveContext.registerTempTable）</p>
+<p>Row对象表示schemerdd中的记录，其本质就是一个定长的字段数组，可以使用对应的getType()方法，比如getString(0)会把字段0按照字符串返回。</p>
+<pre><code>//访问toptweet这个schemerdd中的text列（第一列）
+val toptweet=toptweets.map(row=&gt;row.getString(0))
+</code></pre><p>若要把spark sql连接到一个部署好的hive上，必须把hive-site.xml复制到spark的配置文件目录中($spark_home/conf)。即使没有部署好hive,sparksql会在当前工作目录中创建出hive元数据库，叫作master_db。</p>
+<h1 id="u5728_u5E94_u7528_u4E2D_u4F7F_u7528spark_sql"><a href="#u5728_u5E94_u7528_u4E2D_u4F7F_u7528spark_sql" class="headerlink" title="在应用中使用spark sql"></a>在应用中使用spark sql</h1><h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2><pre><code>import org.apache.spark.sql.hive.HiveContext
+import org.apache.spark.sql.SQLContext
+</code></pre><h2 id="u9690_u5F0F_u8F6C_u6362_u652F_u6301"><a href="#u9690_u5F0F_u8F6C_u6362_u652F_u6301" class="headerlink" title="隐式转换支持"></a>隐式转换支持</h2><pre><code>//创建spark sql的HiveContext
+val hiveCtx=...
+//导入隐式转换支持
+import hiveCtx._
 
-<!-- <script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homePageUrl="your site url " homePageName="回到我的主页"></script> -->
-
-</body>
-</html>
+//创建上下文环境
+val sc=new SparkContext(...)
+val hiveCtx=new HiveContext(sc)
+</code></pre>
     
   </div>
 
@@ -313,8 +285,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="404.html"
-           data-title="" data-url="http://yoursite.com/404.html">
+      <div class="ds-thread" data-thread-key="backup/spark在hive中的应用.html"
+           data-title="spark在hive中的应用" data-url="http://yoursite.com/backup/spark在hive中的应用.html">
       </div>
     
   </div>
