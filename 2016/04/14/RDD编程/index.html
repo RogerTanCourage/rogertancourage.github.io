@@ -8,19 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>RDD编程 | Just Roger</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="RDD基础弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率
-两种创建rdd方式：来自外部数据集和来自对象集合">
+  <meta name="description" content="RDD基础弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率 两种创建rdd方式：来自外部数据集和来自对象集合">
+<meta name="keywords" content="Spark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RDD编程">
 <meta property="og:url" content="http://yoursite.com/2016/04/14/RDD编程/index.html">
 <meta property="og:site_name" content="Just Roger">
-<meta property="og:description" content="RDD基础弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率
-两种创建rdd方式：来自外部数据集和来自对象集合">
+<meta property="og:description" content="RDD基础弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率 两种创建rdd方式：来自外部数据集和来自对象集合">
 <meta property="og:updated_time" content="2017-01-29T14:29:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RDD编程">
-<meta name="twitter:description" content="RDD基础弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率
-两种创建rdd方式：来自外部数据集和来自对象集合">
+<meta name="twitter:description" content="RDD基础弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率 两种创建rdd方式：来自外部数据集和来自对象集合">
   
     <link rel="alternative" href="/atom.xml" title="Just Roger" type="application/atom+xml">
   
@@ -85,13 +83,13 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="/#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="/#" title="weibo"><i class="icon-weibo"></i></a>
+					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="/#" title="rss"><i class="icon-rss"></i></a>
+					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
 		        
-					<a class="zhihu" target="_blank" href="/#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
 			</div>
 		</nav>
@@ -128,13 +126,13 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="/#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="/#" title="weibo"><i class="icon-weibo"></i></a>
+						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 			        
-						<a class="rss" target="_blank" href="/#" title="rss"><i class="icon-rss"></i></a>
+						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
 			        
-						<a class="zhihu" target="_blank" href="/#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 				</div>
 			</nav>
@@ -182,7 +180,7 @@
       
         <h1 id="RDD_u57FA_u7840"><a href="#RDD_u57FA_u7840" class="headerlink" title="RDD基础"></a>RDD基础</h1><p>弹性分布式数据集，操作方式：transform (one add to another) and action(调用add进行求值).当对rdd进行多次action操作时，使用rdd.cache()提高效率</p>
 <p>两种创建rdd方式：来自外部数据集和来自对象集合<br><a id="more"></a></p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lines=sc.<span class="function"><span class="title">textFile</span><span class="params">(<span class="string">'README.md'</span>)</span></span></span><br><span class="line">lines=sc.<span class="function"><span class="title">parallelize</span><span class="params">([<span class="string">'good'</span>,<span class="string">'bad'</span>])</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">lines</span>=sc.textFile(<span class="string">'README.md'</span>)</div><div class="line"><span class="attr">lines</span>=sc.parallelize([<span class="string">'good'</span>,<span class="string">'bad'</span>])</div></pre></td></tr></table></figure>
 <h1 id="u5E38_u89C1_u8F6C_u6362_u548C_u884C_u52A8_u64CD_u4F5C"><a href="#u5E38_u89C1_u8F6C_u6362_u548C_u884C_u52A8_u64CD_u4F5C" class="headerlink" title="常见转换和行动操作"></a>常见转换和行动操作</h1><h2 id="u9488_u5BF9_u5404_u4E2A_u5143_u7D20_u7684_u8F6C_u5316_u64CD_u4F5C"><a href="#u9488_u5BF9_u5404_u4E2A_u5143_u7D20_u7684_u8F6C_u5316_u64CD_u4F5C" class="headerlink" title="针对各个元素的转化操作"></a>针对各个元素的转化操作</h2><p>map,flatMap(传入函数返回可迭代对象)，filter(返回bool类型)</p>
 <h2 id="u4F2A_u96C6_u5408_u64CD_u4F5C"><a href="#u4F2A_u96C6_u5408_u64CD_u4F5C" class="headerlink" title="伪集合操作"></a>伪集合操作</h2><p>rdd.distinct():开销大，需要对所有数据通过网络进行混洗（shuffle）</p>
 <p>rdd.union():会有重</p>
@@ -214,9 +212,9 @@
 <p>collectAsMap()</p>
 <p>lookup(key)</p>
 <h1 id="u7D2F_u52A0_u5668"><a href="#u7D2F_u52A0_u5668" class="headerlink" title="累加器"></a>累加器</h1><p>累加器相当于全局变量</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">file=sc.<span class="function"><span class="title">textFile</span><span class="params">(<span class="string">'input.txt'</span>)</span></span></span><br><span class="line">#创建累机器并初始化为<span class="number">0</span></span><br><span class="line">blankLines=sc.<span class="function"><span class="title">accumulator</span><span class="params">(<span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">file</span>=sc.textFile(<span class="string">'input.txt'</span>)</div><div class="line"><span class="comment">#创建累机器并初始化为0</span></div><div class="line"><span class="attr">blankLines</span>=sc.accumulator(<span class="number">0</span>)</div></pre></td></tr></table></figure>
 <p>​    </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extractCallSigns</span><span class="params">(line)</span>:</span></span><br><span class="line">	<span class="keyword">global</span> blankLines <span class="comment">#访问全局变量</span></span><br><span class="line">	<span class="keyword">if</span>(lines==<span class="string">""</span>):</span><br><span class="line">		blankLines+=<span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> line.split(<span class="string">"\t"</span>)</span><br><span class="line">callSigns=file.flatMap(extractCallSigns)</span><br><span class="line">callSigns.saveAsTextFile(outputDir+<span class="string">"/callsigns"</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"blank lins: %d"</span>%blankLines.values</span><br></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">def extractCallSigns(<span class="built_in">line</span>):</div><div class="line">	<span class="built_in">global</span> blankLines <span class="comment">#访问全局变量</span></div><div class="line">	<span class="keyword">if</span>(<span class="keyword">lines</span>==<span class="string">""</span>):</div><div class="line">		blankLines+=<span class="number">1</span></div><div class="line">	<span class="literal">return</span> <span class="built_in">line</span>.<span class="built_in">split</span>(<span class="string">"\t"</span>)</div><div class="line">callSigns=<span class="built_in">file</span>.flatMap(extractCallSigns)</div><div class="line">callSigns.saveAsTextFile(outputDir+<span class="string">"/callsigns"</span>)</div><div class="line">print <span class="string">"blank lins: %d"</span>%blankLines.values</div></pre></td></tr></table></figure>
 <h1 id="dataframe"><a href="#dataframe" class="headerlink" title="dataframe"></a>dataframe</h1><p>generate df from sparkhive,each row is a object of ‘Row’,can convert tor rdd by ‘.rdd’ and you can get the item from the row by the index as well as the column name. e.g. x.pid ,x[0]</p>
 <h1 id="u6027_u80FD_u63D0_u5347"><a href="#u6027_u80FD_u63D0_u5347" class="headerlink" title="性能提升"></a>性能提升</h1><ol>
 <li>rdd.textFile(‘sss’).repartition(10000）单个机器内存不够时，重新增加分区</li>
@@ -326,18 +324,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/01/02/schedue-for-2017/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/03/18/spark在hive中的应用/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          schedue for 2017
+          spark在hive中的应用
         
       </div>
     </a>
   
   
-    <a href="/2016/03/18/spark在hive中的应用/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">spark在hive中的应用</div>
+    <a href="/2016/09/27/dbscan/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">dbscan</div>
       <i class="icon-circle-right"></i>
     </a>
   

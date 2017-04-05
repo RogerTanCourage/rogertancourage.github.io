@@ -8,31 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>spark初级 | Just Roger</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="预备从国内某约车软件实际工作出发，学习spark，特别感谢倚天同学指导。工作分了两部分，一部分是从hive表提取数据，第二部分是对本地数据进行统计。从hive提取数据需要hivesql相关知识，所以我先从第二份开始。
-spark 本地数据统计//指明包的位置，类似于java
-package com.user
-
-import java.util
-import org.apache.spark.rdd">
+  <meta name="description" content="预备从国内某约车软件实际工作出发，学习spark，特别感谢倚天同学指导。工作分了两部分，一部分是从hive表提取数据，第二部分是对本地数据进行统计。从hive提取数据需要hivesql相关知识，所以我先从第二份开始。 spark 本地数据统计//指明包的位置，类似于java package com.user  import java.util import org.apache.spark.rdd">
+<meta name="keywords" content="spark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spark初级">
 <meta property="og:url" content="http://yoursite.com/2016/03/16/spark初级/index.html">
 <meta property="og:site_name" content="Just Roger">
-<meta property="og:description" content="预备从国内某约车软件实际工作出发，学习spark，特别感谢倚天同学指导。工作分了两部分，一部分是从hive表提取数据，第二部分是对本地数据进行统计。从hive提取数据需要hivesql相关知识，所以我先从第二份开始。
-spark 本地数据统计//指明包的位置，类似于java
-package com.user
-
-import java.util
-import org.apache.spark.rdd">
+<meta property="og:description" content="预备从国内某约车软件实际工作出发，学习spark，特别感谢倚天同学指导。工作分了两部分，一部分是从hive表提取数据，第二部分是对本地数据进行统计。从hive提取数据需要hivesql相关知识，所以我先从第二份开始。 spark 本地数据统计//指明包的位置，类似于java package com.user  import java.util import org.apache.spark.rdd">
 <meta property="og:updated_time" content="2016-03-16T07:40:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spark初级">
-<meta name="twitter:description" content="预备从国内某约车软件实际工作出发，学习spark，特别感谢倚天同学指导。工作分了两部分，一部分是从hive表提取数据，第二部分是对本地数据进行统计。从hive提取数据需要hivesql相关知识，所以我先从第二份开始。
-spark 本地数据统计//指明包的位置，类似于java
-package com.user
-
-import java.util
-import org.apache.spark.rdd">
+<meta name="twitter:description" content="预备从国内某约车软件实际工作出发，学习spark，特别感谢倚天同学指导。工作分了两部分，一部分是从hive表提取数据，第二部分是对本地数据进行统计。从hive提取数据需要hivesql相关知识，所以我先从第二份开始。 spark 本地数据统计//指明包的位置，类似于java package com.user  import java.util import org.apache.spark.rdd">
   
     <link rel="alternative" href="/atom.xml" title="Just Roger" type="application/atom+xml">
   
@@ -97,13 +83,13 @@ import org.apache.spark.rdd">
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="/#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="/#" title="weibo"><i class="icon-weibo"></i></a>
+					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="/#" title="rss"><i class="icon-rss"></i></a>
+					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
 		        
-					<a class="zhihu" target="_blank" href="/#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
 			</div>
 		</nav>
@@ -140,13 +126,13 @@ import org.apache.spark.rdd">
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="/#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="/#" title="weibo"><i class="icon-weibo"></i></a>
+						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 			        
-						<a class="rss" target="_blank" href="/#" title="rss"><i class="icon-rss"></i></a>
+						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
 			        
-						<a class="zhihu" target="_blank" href="/#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 				</div>
 			</nav>
@@ -341,18 +327,18 @@ val dataExtracted=sqlContext.sql(sqlText).map{
   
 <nav id="article-nav">
   
-    <a href="/2016/03/18/spark在hive中的应用/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/03/16/hive总结/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          spark在hive中的应用
+          hive总结
         
       </div>
     </a>
   
   
-    <a href="/2016/03/16/hive总结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hive总结</div>
+    <a href="/2016/03/18/spark在hive中的应用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">spark在hive中的应用</div>
       <i class="icon-circle-right"></i>
     </a>
   
