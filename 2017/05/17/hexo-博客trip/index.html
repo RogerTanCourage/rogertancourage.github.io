@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>hexo 博客trip | Just Roger</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用 toc添加 toc.ejs 在主题目录下新建toc.ejs, 增加一下内容 12345&amp;lt;% if (post.toc != false) &amp;#123; %&amp;gt;&amp;lt;div id=&quot;toc&quot;&amp;gt;  &amp;lt;%- toc(post.content, &amp;#123;list_number: false&amp;#125;) %&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;% &amp;#125; %&amp;gt">
+  <meta name="description" content="使用 toc添加 toc.ejs 在主题目录下新建toc.ejs, 增加一下内容 12345&amp;lt;% if (post.toc != false) &amp;#123; %&amp;gt;&amp;lt;div id=&quot;toc&quot;&amp;gt;  &amp;lt;%- toc(post.content, &amp;#123;list_number: false&amp;#125;) %&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;% &amp;#125; %&amp;g">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo 博客trip">
 <meta property="og:url" content="http://yoursite.com/2017/05/17/hexo-博客trip/index.html">
 <meta property="og:site_name" content="Just Roger">
-<meta property="og:description" content="使用 toc添加 toc.ejs 在主题目录下新建toc.ejs, 增加一下内容 12345&amp;lt;% if (post.toc != false) &amp;#123; %&amp;gt;&amp;lt;div id=&quot;toc&quot;&amp;gt;  &amp;lt;%- toc(post.content, &amp;#123;list_number: false&amp;#125;) %&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;% &amp;#125; %&amp;gt">
-<meta property="og:updated_time" content="2017-05-17T07:47:47.000Z">
+<meta property="og:description" content="使用 toc添加 toc.ejs 在主题目录下新建toc.ejs, 增加一下内容 12345&amp;lt;% if (post.toc != false) &amp;#123; %&amp;gt;&amp;lt;div id=&quot;toc&quot;&amp;gt;  &amp;lt;%- toc(post.content, &amp;#123;list_number: false&amp;#125;) %&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;% &amp;#125; %&amp;g">
+<meta property="og:updated_time" content="2017-05-17T07:49:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo 博客trip">
-<meta name="twitter:description" content="使用 toc添加 toc.ejs 在主题目录下新建toc.ejs, 增加一下内容 12345&amp;lt;% if (post.toc != false) &amp;#123; %&amp;gt;&amp;lt;div id=&quot;toc&quot;&amp;gt;  &amp;lt;%- toc(post.content, &amp;#123;list_number: false&amp;#125;) %&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;% &amp;#125; %&amp;gt">
+<meta name="twitter:description" content="使用 toc添加 toc.ejs 在主题目录下新建toc.ejs, 增加一下内容 12345&amp;lt;% if (post.toc != false) &amp;#123; %&amp;gt;&amp;lt;div id=&quot;toc&quot;&amp;gt;  &amp;lt;%- toc(post.content, &amp;#123;list_number: false&amp;#125;) %&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;% &amp;#125; %&amp;g">
   
     <link rel="alternative" href="/atom.xml" title="Just Roger" type="application/atom+xml">
   
@@ -184,7 +184,8 @@
   </div>
   
 
-        <h2 id="使用-toc"><a href="#u4F7F_u7528_toc" class="headerlink" title="使用 toc"></a>使用 toc</h2><h3 id="添加-tocejs"><a href="#u6DFB_u52A0_toc-ejs" class="headerlink" title="添加 toc.ejs"></a>添加 toc.ejs</h3><p> 在主题目录下新建toc.ejs, 增加一下内容</p>
+        <a id="more"></a>
+<h2 id="使用-toc"><a href="#u4F7F_u7528_toc" class="headerlink" title="使用 toc"></a>使用 toc</h2><h3 id="添加-tocejs"><a href="#u6DFB_u52A0_toc-ejs" class="headerlink" title="添加 toc.ejs"></a>添加 toc.ejs</h3><p> 在主题目录下新建toc.ejs, 增加一下内容</p>
 <figure class="highlight erb"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> <span class="keyword">if</span> (post.toc != <span class="literal">false</span>) &#123; </span><span class="xml"><span class="tag">%&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"toc"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">%-</span></span><span class="ruby"> toc(post.content, &#123;<span class="symbol">list_number:</span> <span class="literal">false</span>&#125;) </span><span class="xml"><span class="tag">%&gt;</span></span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">%</span></span><span class="ruby"> &#125; </span><span class="xml"><span class="tag">%&gt;</span></span></div></pre></td></tr></table></figure>
 <p>这里的<code>toc()</code>函数就是Hexo官方提供的辅助函数，不用再自行写这部分代码了，直接调用<code>toc()</code>函数即可，<code>post.content</code>代表该文章内容，<code>list_number: false</code>是函数提供的一个配置参数，这里指定<code>false</code>代表文章列表不默认显示序号。</p>
 <p>同时这段代码添加了一个文章变量<code>toc</code>，当在文章<code>front-matter</code>里添加<code>toc: false</code>时，就表示该文章不想显示目录。这样便可以控制哪些文章显示目录，哪些文章不想显示目录。</p>
@@ -410,15 +411,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spark</a>
+                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -426,11 +423,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">Spark</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
