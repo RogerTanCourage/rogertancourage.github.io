@@ -155,6 +155,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-hive总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/16/hive总结/">hive总结</a>
+    </h1>
+  
+
+        
+        <a href="/2016/03/16/hive总结/" class="archive-article-date">
+  	<time datetime="2016-03-16T03:30:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+<div id="toc">
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#创建外表的典型操作"><span class="toc-text">创建(外)表的典型操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查询结果的存储"><span class="toc-text">查询结果的存储</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#存储到hive表"><span class="toc-text">存储到hive表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储到hdfs某一个目录"><span class="toc-text">存储到hdfs某一个目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储到本地目录"><span class="toc-text">存储到本地目录</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#向hive表装载数据"><span class="toc-text">向hive表装载数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他命令"><span class="toc-text">其他命令</span></a></li></ol>
+  </div>
+  
+
+        <h1 id="创建外表的典型操作"><a href="#u521B_u5EFA_28_u5916_29_u8868_u7684_u5178_u578B_u64CD_u4F5C" class="headerlink" title="创建(外)表的典型操作"></a>创建(外)表的典型操作</h1><pre><code>CREATE EXTERNAL TABEL &apos;passenger&apos;(
+    &apos;city_id&apos; INT COMMENT &apos;城市id&apos;,
+    ‘phone_number’ BIGINT COMMENT &apos;用户手机号&apos;
+)
+COMMENT &apos;用户表&apos;
+PARTITION BY(
+    &apos;year&apos; string,
+    &apos;month&apos; string,
+    &apos;day&apos; string
+)
+row format delimited
+field terminated by &quot;\t&quot;
+location &apos;hdfs: //---&apos;
+/*增加partition*/
+ALTER TABLE passenger ADD IF NOT EXISTS PARTITION(year=&apos;2016&apos;,month=&apos;03&apos;,day=&apos;11&apos;) location=&apos;2016/03/11&apos; 
+</code></pre><h1 id="查询结果的存储"><a href="#u67E5_u8BE2_u7ED3_u679C_u7684_u5B58_u50A8" class="headerlink" title="查询结果的存储"></a>查询结果的存储</h1><h2 id="存储到hive表"><a href="#u5B58_u50A8_u5230hive_u8868" class="headerlink" title="存储到hive表"></a>存储到hive表</h2><pre><code>//创建表
+insert overwrite table ***
+//查询语句
+select * ...
+</code></pre><h2 id="存储到hdfs某一个目录"><a href="#u5B58_u50A8_u5230hdfs_u67D0_u4E00_u4E2A_u76EE_u5F55" class="headerlink" title="存储到hdfs某一个目录"></a>存储到hdfs某一个目录</h2><pre><code>insert overwrite directory &apos;hdfs_dir/...&apos;
+select *...
+</code></pre><h2 id="存储到本地目录"><a href="#u5B58_u50A8_u5230_u672C_u5730_u76EE_u5F55" class="headerlink" title="存储到本地目录"></a>存储到本地目录</h2><pre><code>insert overwirte local directory &apos;local_dir/...&apos;
+select * ...
+</code></pre><h1 id="向hive表装载数据"><a href="#u5411hive_u8868_u88C5_u8F7D_u6570_u636E" class="headerlink" title="向hive表装载数据"></a>向hive表装载数据</h1><pre><code>//建表
+LOAD DATA (LOCAL) INPATH &apos;/dir/...&apos;
+OVERWRITE INTO TABLE tablename
+PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
+</code></pre><h1 id="其他命令"><a href="#u5176_u4ED6_u547D_u4EE4" class="headerlink" title="其他命令"></a>其他命令</h1><p>describe table; drop table ;show tables;!ls;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/03/16/hive总结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-2016读书总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -774,11 +869,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spark</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
