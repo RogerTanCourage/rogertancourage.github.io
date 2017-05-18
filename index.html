@@ -155,6 +155,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cpp-copy-control" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/18/cpp-copy-control/">cpp copy control</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/18/cpp-copy-control/" class="archive-article-date">
+  	<time datetime="2017-05-18T10:41:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h2><p>在cpp中有关copy control有<strong>big 5</strong>, 分别是constructor, copy constructor, copy assignment, move contructor, move assignment</p>
+<p>通常，如果自定义了<strong>big 5</strong>中的一个，最好全部都自定义。尤其是类中存在指针，并且指针是由其他成员函数（例如constructor）申请的地址，需要我们自定义<strong>big 5</strong>。</p>
+        
+          <a class="article-more-a" href="/2017/05/18/cpp-copy-control/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cpp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/18/cpp-copy-control/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-hexo-博客trip" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -763,118 +828,6 @@ val hiveCtx=new HiveContext(sc)
 
 
   
-    <article id="post-spark初级" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/16/spark初级/">spark初级</a>
-    </h1>
-  
-
-        
-        <a href="/2016/03/16/spark初级/" class="archive-article-date">
-  	<time datetime="2016-03-16T07:09:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-		
-<div id="toc">
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#预备"><span class="toc-text">预备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#spark-本地数据统计"><span class="toc-text">spark 本地数据统计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用spark从hive表提取数据"><span class="toc-text">使用spark从hive表提取数据</span></a></li></ol>
-  </div>
-  
-
-        <h1 id="预备"><a href="#u9884_u5907" class="headerlink" title="预备"></a>预备</h1><p>从国内某约车软件实际工作出发，学习spark，特别感谢倚天同学指导。工作分了两部分，一部分是从hive表提取数据，第二部分是对本地数据进行统计。从hive提取数据需要hivesql相关知识，所以我先从第二份开始。</p>
-<h1 id="spark-本地数据统计"><a href="#spark__u672C_u5730_u6570_u636E_u7EDF_u8BA1" class="headerlink" title="spark 本地数据统计"></a>spark 本地数据统计</h1><pre><code>//指明包的位置，类似于java
-package com.user
-
-import java.util
-import org.apache.spark.rdd.RDD
-import org.apache.spark.spark{SparkConf,SparkContext}
-/**
-*
-*created by yitian on 16/3/10
-*/
-object Stat{
-    def main(args: Array[String]){
-    //首先要声明 sparkconf 和sparkcontext
-        val sparkConf=new SparkConf().setAppName(this.getClass.getName+&quot;#jitian&quot;)
-        val sc=new SparkContext(sparkConf)
-
-        val filePath=&quot;/user/data&quot;
-        val outPath=&quot;user/output&quot;
-        val period=28.0
-
-        //统计阶段1
-        val statData=sc.textFile(filePath).map{
-            case str=&gt; 
-                val content=str.split(&quot;\t&quot;)
-                val pid=content(0)
-                val phone=content(1)
-                val pcost=content(3).toDouble
-                val acost=content(4).toDouble
-                ((pid,phone),(1,acost/pcost))
-
-        }.reduceByKey((a,b)=&gt;(a._1+b._1,a._2+b._2))
-        .map{case((pid,phone),(ocount,disSum))=&gt;
-            ((pid,phone),(ocount/peroid,0.0,disSum,ocount))
-        }
-
-        //其他阶段统计
-    }
-}            
-</code></pre><h1 id="使用spark从hive表提取数据"><a href="#u4F7F_u7528spark_u4ECEhive_u8868_u63D0_u53D6_u6570_u636E" class="headerlink" title="使用spark从hive表提取数据"></a>使用spark从hive表提取数据</h1><pre><code>//部分
-val sqlContext=new HiveContext(sc)
-val sqlText=&quot; &quot;    //sql
-val dataExtracted=sqlContext.sql(sqlText).map{
-    case Row(pID: Long,pPhone: String,oId: Long,sCost:Double,aCost: Double)=&gt;pId.toString+&quot;\t&quot;+pPhone+&quot;\t&quot;
-}.repartition(5).saveAsTextFile(FILE_LOCATION)
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">spark</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/03/16/spark初级/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -989,7 +942,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Computational Geometry</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">阅读</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cpp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -997,15 +958,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Computational Geometry</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spark</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1021,15 +974,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">职场</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">极简主义</a>
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+                <a href="javascript:void(0)" class="js-tag color5">极简主义</a>
               </li>
             
             <div class="clearfix"></div>

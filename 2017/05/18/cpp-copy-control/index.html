@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2016 | Just Roger</title>
+  <title>cpp copy control | Just Roger</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Just Roger">
-<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
+  <meta name="description" content="概述在cpp中有关copy control有big 5, 分别是constructor, copy constructor, copy assignment, move contructor, move assignment 通常，如果自定义了big 5中的一个，最好全部都自定义。尤其是类中存在指针，并且指针是由其他成员函数（例如constructor）申请的地址，需要我们自定义big 5。">
+<meta name="keywords" content="cpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cpp copy control">
+<meta property="og:url" content="http://yoursite.com/2017/05/18/cpp-copy-control/index.html">
 <meta property="og:site_name" content="Just Roger">
+<meta property="og:description" content="概述在cpp中有关copy control有big 5, 分别是constructor, copy constructor, copy assignment, move contructor, move assignment 通常，如果自定义了big 5中的一个，最好全部都自定义。尤其是类中存在指针，并且指针是由其他成员函数（例如constructor）申请的地址，需要我们自定义big 5。">
+<meta property="og:updated_time" content="2017-05-18T11:03:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Just Roger">
+<meta name="twitter:title" content="cpp copy control">
+<meta name="twitter:description" content="概述在cpp中有关copy control有big 5, 分别是constructor, copy constructor, copy assignment, move contructor, move assignment 通常，如果自定义了big 5中的一个，最好全部都自定义。尤其是类中存在指针，并且指针是由其他成员函数（例如constructor）申请的地址，需要我们自定义big 5。">
   
     <link rel="alternative" href="/atom.xml" title="Just Roger" type="application/atom+xml">
   
@@ -153,288 +158,167 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-cpp-copy-control" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      cpp copy control
+    </h1>
+  
+
+        
+        <a href="/2017/05/18/cpp-copy-control/" class="archive-article-date">
+  	<time datetime="2017-05-18T10:41:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-18</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+<div id="toc">
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例代码"><span class="toc-text">示例代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到的问题"><span class="toc-text">遇到的问题</span></a></li></ol>
+  </div>
+  
+
+        <h2 id="概述"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h2><p>在cpp中有关copy control有<strong>big 5</strong>, 分别是constructor, copy constructor, copy assignment, move contructor, move assignment</p>
+<p>通常，如果自定义了<strong>big 5</strong>中的一个，最好全部都自定义。尤其是类中存在指针，并且指针是由其他成员函数（例如constructor）申请的地址，需要我们自定义<strong>big 5</strong>。</p>
+<a id="more"></a>
+<h2 id="示例代码"><a href="#u793A_u4F8B_u4EE3_u7801" class="headerlink" title="示例代码"></a>示例代码</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">class M&#123;</div><div class="line">public:</div><div class="line">  size_t size;</div><div class="line">  char* buf;</div><div class="line">  // 存在指针，最好自定义swap，可以直接复制指针</div><div class="line">  friend void swap(M&amp;, M&amp;);</div><div class="line">  </div><div class="line">  // constructor 通常explicit</div><div class="line">  explicit M(size_t size=512): size(size), buf(new char[size])&#123;&#125;</div><div class="line">  ~M()&#123;delete[] buf;&#125;</div><div class="line">  //copy constuctor</div><div class="line">  M(const M&amp; rhs): size(rhs.size), buf(new char[rhs.size])&#123;</div><div class="line">    //deep copy</div><div class="line">    //不可以直接 *buf++ = *(rhs.buf)++</div><div class="line">    auto lhsTmp = buf;</div><div class="line">    auto rhsTmp = rhs.buf;</div><div class="line">    for(auto i = 0 ; i !=rhs.size; ++i)</div><div class="line">      *lhsTmp++ = *rhsTmp++;</div><div class="line">  &#125;</div><div class="line">  //move constructor</div><div class="line">  M(M&amp;&amp; rhs): size(rhs.size), buf(rhs.buf)&#123;</div><div class="line">    //reset rhs</div><div class="line">    rhs.size = 0;</div><div class="line">    rhs.buf = nullptr;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  //copy assignment &amp;&amp; move assignment</div><div class="line">  //注意参数非引用，传值</div><div class="line">  M&amp; operator=(M rhs)&#123;</div><div class="line">  	swap(*this, rhs);</div><div class="line">    return *this;</div><div class="line">  &#125;</div><div class="line"> 	</div><div class="line">&#125;;</div><div class="line"></div><div class="line">inline void swap(M&amp; lhs, M&amp; rhs)&#123;</div><div class="line">  using std::swap;</div><div class="line">  swap(lhs.size, rhs.size);</div><div class="line">  //直接换指针，不需要换内容</div><div class="line">  swap(lhs.buf, rhs.buf);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="遇到的问题"><a href="#u9047_u5230_u7684_u95EE_u9898" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul>
+<li>不可以直接 <em>buf++ = </em>(rhs.buf)++，这样直接更改了buf地址，导致destructor出错。</li>
+<li>std::cout 对char* 重栽了，不是输出地址，而是输出内容，直到’\0’</li>
+<li>char* 和 char[]  区别是后者是const， 不能累加。</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/09/27/dbscan/" class="archive-article-date">
-  	<time datetime="2016-09-27T01:34:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/27/dbscan/">dbscan</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">machine learning</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cpp</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/18/cpp-copy-control/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/14/RDD编程/" class="archive-article-date">
-  	<time datetime="2016-04-14T02:35:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-14</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/14/RDD编程/">RDD编程</a>
-    </h1>
+    <a href="/2017/05/17/hexo-博客trip/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          hexo 博客trip
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spark</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/03/18/spark在hive中的应用/" class="archive-article-date">
-  	<time datetime="2016-03-18T13:30:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/18/spark在hive中的应用/">spark在hive中的应用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">spark</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/03/16/spark初级/" class="archive-article-date">
-  	<time datetime="2016-03-16T07:09:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/16/spark初级/">spark初级</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">spark</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/03/16/hive总结/" class="archive-article-date">
-  	<time datetime="2016-03-16T03:30:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/16/hive总结/">hive总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/01/05/2016读书总结/" class="archive-article-date">
-  	<time datetime="2016-01-05T13:57:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/01/05/2016读书总结/">2016读书总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">阅读</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/01/05/2016版一日规划/" class="archive-article-date">
-  	<time datetime="2016-01-05T03:39:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/01/05/2016版一日规划/">2016版一日规划</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -457,8 +341,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
