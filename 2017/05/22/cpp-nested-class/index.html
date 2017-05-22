@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 杂谈 | Just Roger</title>
+  <title>cpp nested class | Just Roger</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Just Roger">
-<meta property="og:url" content="http://yoursite.com/tags/杂谈/index.html">
+  <meta name="description" content="知识点概要 nested class 和 enclosing class 是相互独立的 nested class 的名字只能在enclosing class scope内可见 public nested class 可以在任何处使用，private nested class 只能在enclosing class成员或者friends使用，proteced可以在encloing、friends, d">
+<meta name="keywords" content="cpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cpp nested class">
+<meta property="og:url" content="http://yoursite.com/2017/05/22/cpp-nested-class/index.html">
 <meta property="og:site_name" content="Just Roger">
+<meta property="og:description" content="知识点概要 nested class 和 enclosing class 是相互独立的 nested class 的名字只能在enclosing class scope内可见 public nested class 可以在任何处使用，private nested class 只能在enclosing class成员或者friends使用，proteced可以在encloing、friends, d">
+<meta property="og:updated_time" content="2017-05-22T01:56:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Just Roger">
+<meta name="twitter:title" content="cpp nested class">
+<meta name="twitter:description" content="知识点概要 nested class 和 enclosing class 是相互独立的 nested class 的名字只能在enclosing class scope内可见 public nested class 可以在任何处使用，private nested class 只能在enclosing class成员或者friends使用，proteced可以在encloing、friends, d">
   
     <link rel="alternative" href="/atom.xml" title="Just Roger" type="application/atom+xml">
   
@@ -153,167 +158,167 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-cpp-nested-class" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/02/schedue-for-2017/" class="archive-article-date">
-  	<time datetime="2017-01-02T01:12:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/02/schedue-for-2017/">schedue for 2017</a>
+    <h1 class="article-title" itemprop="name">
+      cpp nested class
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/05/22/cpp-nested-class/" class="archive-article-date">
+  	<time datetime="2017-05-22T01:42:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+<div id="toc">
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点概要"><span class="toc-text">知识点概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实例"><span class="toc-text">代码实例</span></a></li></ol>
+  </div>
+  
+
+        <h2 id="知识点概要"><a href="#u77E5_u8BC6_u70B9_u6982_u8981" class="headerlink" title="知识点概要"></a>知识点概要</h2><ol>
+<li>nested class 和 enclosing class 是相互独立的</li>
+<li>nested class 的名字只能在enclosing class scope内可见</li>
+<li>public nested class 可以在任何处使用，private nested class 只能在enclosing class成员或者friends使用，proteced可以在encloing、friends, derived class使用。</li>
+<li>.h 文件中 nested class declaration要完整。</li>
+</ol>
+<a id="more"></a>
+<h2 id="代码实例"><a href="#u4EE3_u7801_u5B9E_u4F8B" class="headerlink" title="代码实例"></a>代码实例</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Enclosing.hpp</span></div><div class="line"><span class="keyword">class</span> Enclosing&#123;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">  <span class="keyword">int</span> data;</div><div class="line">  <span class="comment">// private nested class</span></div><div class="line">  NestedClassPri&#123;</div><div class="line">  <span class="keyword">private</span>:</div><div class="line">    <span class="keyword">int</span> data;</div><div class="line">  <span class="keyword">public</span>:</div><div class="line">    f();</div><div class="line">  &#125;;</div><div class="line">  <span class="comment">// private nested class only use in enclosing or friends</span></div><div class="line">  NestedClassPri nestedClassPri;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>;</div><div class="line">  <span class="comment">// public nested class</span></div><div class="line">  NestedClassPub&#123;</div><div class="line">  <span class="keyword">private</span>:</div><div class="line">    <span class="keyword">int</span> data;</div><div class="line">  <span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>;</div><div class="line">  &#125;;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">g</span><span class="params">()</span></span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Enclosing.cpp</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Enclosing.hpp"</span></span></div><div class="line">Enclosing::f()&#123;...&#125;</div><div class="line">Enclosing::g()&#123;<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; &amp;nestedClassPri &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;&#125;</div><div class="line">Enclosing::NestedClassPri::f()&#123;...&#125;</div><div class="line">Enclosing::NestedClassPub::f()&#123;...&#125;</div></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cpp</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/22/cpp-nested-class/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/01/05/2016版一日规划/" class="archive-article-date">
-  	<time datetime="2016-01-05T03:39:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/01/05/2016版一日规划/">2016版一日规划</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/12/24/岁末年初/" class="archive-article-date">
-  	<time datetime="2015-12-24T07:17:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-12-24</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/24/岁末年初/">岁末年初</a>
-    </h1>
+    <a href="/2017/05/18/cpp-copy-control/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          cpp copy control
+        
+      </div>
+    </a>
   
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/杂谈/" class="article-tag-list-link color3">杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+</nav>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
+
+
   
-  
-    </div></section>
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -336,9 +341,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
