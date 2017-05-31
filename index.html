@@ -155,6 +155,62 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/31/test/">test</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/31/test/" class="archive-article-date">
+  	<time datetime="2017-05-31T09:32:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+<div id="toc">
+  
+  </div>
+  
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/31/test/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Smith-Waterman-Alg" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -747,77 +803,9 @@
 
 
   
-    <article id="post-dbscan" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/27/dbscan/">dbscan</a>
-    </h1>
-  
-
-        
-        <a href="/2016/09/27/dbscan/" class="archive-article-date">
-  	<time datetime="2016-09-27T01:34:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-		
-<div id="toc">
-  
-  </div>
-  
-
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">DBSCAN(D, eps, Minpts)</div><div class="line"></div><div class="line">	C=<span class="number">0</span></div><div class="line"></div><div class="line">	<span class="keyword">for</span> each unvisited point P <span class="keyword">in</span> dataset D</div><div class="line"></div><div class="line">		mark P <span class="keyword">as</span> visited</div><div class="line"></div><div class="line">		N=getNeighbors(P, eps)</div><div class="line"></div><div class="line">		<span class="keyword">if</span> sizeOf(N) &lt; Mints</div><div class="line"></div><div class="line">			mark P <span class="keyword">as</span> NOISE</div><div class="line"></div><div class="line">		<span class="keyword">else</span></div><div class="line"></div><div class="line">			C=next cluster</div><div class="line"></div><div class="line">			expandCluster(P, N, C, eps, Minpts)</div><div class="line"></div><div class="line">expandCluster(P, N, C, eps, Minpts)</div><div class="line"></div><div class="line">	add P to cluster C</div><div class="line"></div><div class="line">	<span class="keyword">for</span> each point P’ <span class="keyword">in</span> N</div><div class="line"></div><div class="line">		<span class="keyword">if</span> P’ <span class="keyword">is</span> <span class="keyword">not</span> visited</div><div class="line"></div><div class="line">			mark P’ <span class="keyword">as</span> visited</div><div class="line"></div><div class="line">			N’=getNeighbors(P’, eps)</div><div class="line"></div><div class="line">			<span class="keyword">if</span> sizeOf(N’) &gt;= minPts</div><div class="line"></div><div class="line">				N = N joined <span class="keyword">with</span> N’</div><div class="line"></div><div class="line">		<span class="keyword">if</span> P’ <span class="keyword">is</span> <span class="keyword">not</span> yew cluster any cluster</div><div class="line"></div><div class="line">			add P’ to cluster C</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">machine learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/27/dbscan/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -929,10 +917,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
@@ -941,11 +925,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">序列匹配</a>
+                <a href="javascript:void(0)" class="js-tag color1">Spark</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spark</a>
+                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">序列匹配</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -965,19 +953,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">职场</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">spark</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+                <a href="javascript:void(0)" class="js-tag color3">职场</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">极简主义</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
             
             <div class="clearfix"></div>
