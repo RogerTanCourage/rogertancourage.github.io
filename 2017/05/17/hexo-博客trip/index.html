@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/17/hexo-博客trip/index.html">
 <meta property="og:site_name" content="Just Roger">
 <meta property="og:description" content="本位对使用hexo + github + yilia 构建技术博客过程中本人遇到的问题和使用到的一些小技巧做了总结。">
-<meta property="og:updated_time" content="2017-06-02T08:43:48.000Z">
+<meta property="og:updated_time" content="2017-06-02T09:44:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo 博客trip">
 <meta name="twitter:description" content="本位对使用hexo + github + yilia 构建技术博客过程中本人遇到的问题和使用到的一些小技巧做了总结。">
@@ -180,7 +180,7 @@
       
 		
 <div id="toc">
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-toc"><span class="toc-text">使用 toc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-tocejs"><span class="toc-text">添加 toc.ejs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加到页面中"><span class="toc-text">添加到页面中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改目录样式"><span class="toc-text">修改目录样式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#more"><span class="toc-text">more</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公式"><span class="toc-text">公式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-math安装"><span class="toc-text">hexo-math安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-text"> </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#githubio-博客中使用图片"><span class="toc-text">github.io 博客中使用图片</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-toc"><span class="toc-text">使用 toc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-tocejs"><span class="toc-text">添加 toc.ejs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加到页面中"><span class="toc-text">添加到页面中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改目录样式"><span class="toc-text">修改目录样式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#more"><span class="toc-text">more</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公式"><span class="toc-text">公式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-math安装"><span class="toc-text">hexo-math安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#markdown和mathjax冲突的问题"><span class="toc-text">### markdown和mathjax冲突的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#githubio-博客中使用图片"><span class="toc-text">github.io 博客中使用图片</span></a></li></ol>
   </div>
   
 
@@ -210,13 +210,15 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="attr">math:</span></div><div class="line"><span class="attr">  engine:</span> <span class="string">'mathjax'</span> <span class="comment"># or 'katex'</span></div><div class="line"><span class="attr">  mathjax:</span></div><div class="line"><span class="attr">    src:</span> <span class="string">custom_mathjax_source</span></div><div class="line"><span class="attr">    config:</span></div><div class="line">      <span class="comment"># MathJax config</span></div><div class="line"><span class="attr">  katex:</span></div><div class="line"><span class="attr">    css:</span> <span class="string">custom_css_source</span></div><div class="line"><span class="attr">    js:</span> <span class="string">custom_js_source</span> <span class="comment"># not used</span></div><div class="line"><span class="attr">    config:</span></div><div class="line">      <span class="comment"># KaTeX config</span></div></pre></td></tr></table></figure>
 <p>同时开启主题_config.yml中的mathjax开关</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
-<h2 id=""><a href="#" class="headerlink" title=""></a> </h2><h2 id="githubio-博客中使用图片"><a href="#github-io__u535A_u5BA2_u4E2D_u4F7F_u7528_u56FE_u7247" class="headerlink" title="github.io 博客中使用图片"></a>github.io 博客中使用图片</h2><p>首先在_config.yml中</p>
+<h2 id="markdown和mathjax冲突的问题"><a href="#23_23_23_markdown_u548Cmathjax_u51B2_u7A81_u7684_u95EE_u9898" class="headerlink" title="### markdown和mathjax冲突的问题"></a>### markdown和mathjax冲突的问题</h2><p>使用typora本地没有冲突，但是是github.io中有冲突，解决办法是在公式前后加入标签</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">raw</span> %&#125;</span><span class="xml"></span></div><div class="line">#公式</div><div class="line"><span class="template-tag">&#123;% <span class="name">endraw</span> %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
+<p>这种方法在typora本地显示不友好。</p>
+<h2 id="githubio-博客中使用图片"><a href="#github-io__u535A_u5BA2_u4E2D_u4F7F_u7528_u56FE_u7247" class="headerlink" title="github.io 博客中使用图片"></a>github.io 博客中使用图片</h2><p>首先在_config.yml中</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">post_asset_floder:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
 <p>开启后，新建一片文章，都会生成一个用于存放辅助资源的同名文件夹，将图片放在这个文件夹下。</p>
 <p>当提交以后，可以在github中找到这个图片url。</p>
 <p>博客中插入图片即：</p>
 <figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">!<span class="selector-attr">[]</span>(url?raw=true)</div></pre></td></tr></table></figure>
-
       
 
       
@@ -464,15 +466,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">序列匹配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Computational Geometry</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spark</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">序列匹配</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Just Roger">
 <meta property="og:description" content="参考《Identificaion of common molecular subsequences》 QGiven two molecular sequences $A = a_1 a_2 … a_n$ and $B = b_1 b_2 … b_n$, a similarity $s(a,b)$ is given between sequence elements $a$ and $b$. Del">
 <meta property="og:image" content="https://github.com/RogerTanCourage/rogertancourage.github.io/blob/master/2017/05/31/Smith-Waterman-Alg/smith_waterman.png?raw=true">
-<meta property="og:updated_time" content="2017-06-02T09:40:36.000Z">
+<meta property="og:updated_time" content="2017-06-02T09:51:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Smith Waterman Alg">
 <meta name="twitter:description" content="参考《Identificaion of common molecular subsequences》 QGiven two molecular sequences $A = a_1 a_2 … a_n$ and $B = b_1 b_2 … b_n$, a similarity $s(a,b)$ is given between sequence elements $a$ and $b$. Del">
@@ -191,12 +191,18 @@
 <p>Q: how to find pairs of segments with high degrees of similarity.</p>
 <a id="more"></a>
 <h3 id="s"><a href="#S" class="headerlink" title="S"></a>S</h3><p>(dynamic programing) we set up a matrix $H$, and</p>
-<p>$$<br>H<em>{k0} = H</em>{0l} = 0<br>$$</p>
+
+
+$$
+H_{k0} = H_{0l} = 0 \mbox{ for } 0 \leq k \leq n \mbox{ and } 0 \leq l \leq m
+$$
+
+
 <p>Priliminary values of $H$ have the interpretation that $H_{ij}$ is the maximum similarity  fo two segments ending in $a_i$ and $b_j$ respectively. These values are obtained from the  relationship</p>
  
 
 $$
-H_{k0} = H_{0l} = 0 \mbox{ for }
+H_{ij} = \max \{ H_{i-1, j-1} + s(a_i, b_j), \max \limits_{k \geq 1}\{ H_{i-j} - W_k\}, \max \limits_{l \geq 1} \{ H_{i, j-l} - W_l \}, 0 \}
 $$
 
 
@@ -451,15 +457,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">序列匹配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Computational Geometry</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spark</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">序列匹配</a>
               </li>
              
               <li class="article-tag-list-item">
