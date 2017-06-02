@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/1 | Just Roger</title>
+  <title>gitlab | Just Roger</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Just Roger">
-<meta property="og:url" content="http://yoursite.com/archives/2017/01/index.html">
+  <meta name="description" content="在intellij idea中使用git。 首先需要明确，git是本地和远程各一个仓库，两个仓库连接后进行同步。">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gitlab">
+<meta property="og:url" content="http://yoursite.com/2017/06/02/gitlab/index.html">
 <meta property="og:site_name" content="Just Roger">
+<meta property="og:description" content="在intellij idea中使用git。 首先需要明确，git是本地和远程各一个仓库，两个仓库连接后进行同步。">
+<meta property="og:updated_time" content="2017-06-02T08:31:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Just Roger">
+<meta name="twitter:title" content="gitlab">
+<meta name="twitter:description" content="在intellij idea中使用git。 首先需要明确，git是本地和远程各一个仓库，两个仓库连接后进行同步。">
   
     <link rel="alternative" href="/atom.xml" title="Just Roger" type="application/atom+xml">
   
@@ -153,87 +158,174 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-gitlab" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/29/关于酒文化/" class="archive-article-date">
-  	<time datetime="2017-01-29T08:28:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/29/关于酒文化/">关于酒文化</a>
+    <h1 class="article-title" itemprop="name">
+      gitlab
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        <a href="/2017/06/02/gitlab/" class="archive-article-date">
+  	<time datetime="2017-06-02T07:56:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+<div id="toc">
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本地git配置"><span class="toc-text">本地git配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程git配置"><span class="toc-text">远程git配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建远程仓库"><span class="toc-text">新建远程仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建本地仓库"><span class="toc-text">新建本地仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#本地空"><span class="toc-text">本地空</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地存在文件夹"><span class="toc-text">本地存在文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地已经有仓库未连接远程"><span class="toc-text">本地已经有仓库（未连接远程）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在intellj-idea-中使用gitgitlab"><span class="toc-text">在intellj idea 中使用git(gitlab)</span></a></li></ol>
   </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/02/schedue-for-2017/" class="archive-article-date">
-  	<time datetime="2017-01-02T01:12:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/02/schedue-for-2017/">schedue for 2017</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        <p>在intellij idea中使用git。</p>
+<p>首先需要明确，git是本地和远程各一个仓库，两个仓库连接后进行同步。</p>
+<a id="more"></a>
+<h2 id="本地git配置"><a href="#u672C_u5730git_u914D_u7F6E" class="headerlink" title="本地git配置"></a>本地git配置</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user<span class="selector-class">.name</span> <span class="string">"Roger Tan"</span></div><div class="line">git config --global user<span class="selector-class">.email</span> <span class="string">"***@gmail.com"</span></div></pre></td></tr></table></figure>
+<h2 id="远程git配置"><a href="#u8FDC_u7A0Bgit_u914D_u7F6E" class="headerlink" title="远程git配置"></a>远程git配置</h2><p>添加ssh keys.</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ~<span class="regexp">/.ssh/i</span>d_rsa.pub</div></pre></td></tr></table></figure>
+<h2 id="新建远程仓库"><a href="#u65B0_u5EFA_u8FDC_u7A0B_u4ED3_u5E93" class="headerlink" title="新建远程仓库"></a>新建远程仓库</h2><p>直接在gitlab/github网页中操作</p>
+<h2 id="新建本地仓库"><a href="#u65B0_u5EFA_u672C_u5730_u4ED3_u5E93" class="headerlink" title="新建本地仓库"></a>新建本地仓库</h2><h3 id="本地空"><a href="#u672C_u5730_u7A7A" class="headerlink" title="本地空"></a>本地空</h3><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git clone <span class="string">"url"</span></div><div class="line">cd the <span class="built_in">directory</span></div><div class="line">touch  README.md</div><div class="line">git commit -m <span class="string">"add README"</span></div><div class="line">git <span class="built_in">push</span> -u <span class="built_in">origin</span> master</div></pre></td></tr></table></figure>
+<h3 id="本地存在文件夹"><a href="#u672C_u5730_u5B58_u5728_u6587_u4EF6_u5939" class="headerlink" title="本地存在文件夹"></a>本地存在文件夹</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">cd existing_floder</div><div class="line">git init</div><div class="line">git remote origin <span class="keyword">add</span><span class="bash"> origin url</span></div><div class="line">git <span class="keyword">add</span><span class="bash"> .</span></div><div class="line">git commit -m <span class="string">"ini commit"</span></div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
+<h3 id="本地已经有仓库未连接远程"><a href="#u672C_u5730_u5DF2_u7ECF_u6709_u4ED3_u5E93_uFF08_u672A_u8FDE_u63A5_u8FDC_u7A0B_uFF09" class="headerlink" title="本地已经有仓库（未连接远程）"></a>本地已经有仓库（未连接远程）</h3><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd existing_repo</div><div class="line">git remote add <span class="built_in">origin</span> url</div><div class="line">git <span class="built_in">push</span> -u <span class="built_in">origin</span> --all</div><div class="line">git <span class="built_in">push</span> -u <span class="built_in">origin</span> --tags</div></pre></td></tr></table></figure>
+<h2 id="在intellj-idea-中使用gitgitlab"><a href="#u5728intellj_idea__u4E2D_u4F7F_u7528git_28gitlab_29" class="headerlink" title="在intellj idea 中使用git(gitlab)"></a>在intellj idea 中使用git(gitlab)</h2><ol>
+<li>gitlab 建立空仓库</li>
+<li>本地clone下来</li>
+<li>intellji中在这个文件夹下新建项目</li>
+<li>然后直接在intellj “vcs”中add , commit ,push 即可</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/02/gitlab/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/31/test/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          test
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -256,8 +348,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
