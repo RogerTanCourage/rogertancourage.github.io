@@ -155,6 +155,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-使用python画cdf图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/27/使用python画cdf图/">使用python画cdf图</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/27/使用python画cdf图/" class="archive-article-date">
+  	<time datetime="2017-06-27T12:28:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+<div id="toc">
+  
+  </div>
+  
+
+        <p>CDF图是常见的分析数据的图标，使用python可以快速方便的生成。</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># encoding: utf-8</span></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> scikits.statsmodels.api <span class="keyword">as</span> sm </div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">	a = open(<span class="string">"data_1.txt"</span>,<span class="string">'r'</span>)</div><div class="line">	sample = []</div><div class="line">	s = <span class="number">0.0</span></div><div class="line">	<span class="keyword">for</span> line <span class="keyword">in</span> a.readlines():</div><div class="line">		sample.append(float(line))</div><div class="line">		s += float(line)</div><div class="line"></div><div class="line">	<span class="keyword">print</span> <span class="string">"location times: "</span> + str(len(sample))</div><div class="line">	<span class="keyword">print</span> <span class="string">"mean error: "</span> + str(s/(len(sample)))</div><div class="line">	sample.sort()</div><div class="line">	cep90len = int(len(sample) * <span class="number">0.9</span>)</div><div class="line">	cep90sum = <span class="number">0.0</span></div><div class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(cep90len):</div><div class="line">		cep90sum += sample[i]</div><div class="line">	<span class="keyword">print</span> <span class="string">"CEP_90%: "</span> + str(cep90sum/cep90len)</div><div class="line">	<span class="keyword">print</span> <span class="string">"cep 90 len"</span> + str(cep90len)</div><div class="line">	<span class="comment"># sample = np.random.uniform(0, 1, 50)</span></div><div class="line">	ecdf = sm.tools.tools.ECDF(sample)</div><div class="line"></div><div class="line">	x = np.linspace(min(sample), max(sample))</div><div class="line">	y = ecdf(x)</div><div class="line">	plt.step(x,y)</div><div class="line">	plt.ylabel(<span class="string">"CDF"</span>)</div><div class="line">	plt.xlabel(<span class="string">"ERROR/m"</span>)</div><div class="line">	plt.show()</div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">	main()</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数据可视化</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/27/使用python画cdf图/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-gitlab" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -733,62 +807,6 @@
 
 
   
-    <article id="post-关于酒文化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/29/关于酒文化/">关于酒文化</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/29/关于酒文化/" class="archive-article-date">
-  	<time datetime="2017-01-29T08:28:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-		
-<div id="toc">
-  
-  </div>
-  
-
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/29/关于酒文化/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -903,15 +921,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">序列匹配</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Spark</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -919,7 +937,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spark</a>
+                <a href="javascript:void(0)" class="js-tag color5">序列匹配</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -944,6 +962,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">spark</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
               </li>
              
               <li class="article-tag-list-item">
