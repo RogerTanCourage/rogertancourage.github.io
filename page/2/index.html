@@ -155,6 +155,62 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="const-c" class="article article-type-const  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/10/c/">c++</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/10/c/" class="archive-article-date">
+  	<time datetime="2017-03-10T07:28:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+<div id="toc">
+  
+  </div>
+  
+
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/10/c/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-关于酒文化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -883,114 +939,6 @@ PARTITION(dt=&apos; &apos;,country=&apos; &apos;);        //设置字段条件
 
 
   
-    <article id="post-Intersection" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/30/Intersection/">Line Segment Intersection</a>
-    </h1>
-  
-
-        
-        <a href="/2015/12/30/Intersection/" class="archive-article-date">
-  	<time datetime="2015-12-30T07:30:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-12-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-		
-<div id="toc">
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#problem"><span class="toc-text">Problem</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#plane-sweep-alg"><span class="toc-text">Plane Sweep Alg.</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#concepts"><span class="toc-text">Concepts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#intersection-lemma"><span class="toc-text">Intersection Lemma</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#data-structure"><span class="toc-text">Data structure</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#alg"><span class="toc-text">Alg</span></a></li></ol></li></ol>
-  </div>
-  
-
-        <h1 id="problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>Input: A set $S=\lbrace S_1,S_2,...,S_n\rbrace $ of(closed)line segment in $R^2$  </p>
-<p>Output: All <em>intersection points</em> between segements in S  </p>
-<p>In particular,we assume:  </p>
-<ol>
-<li>The x-coordinates of the endpoints and intersection points are all distinct.(This implies that no line segment is vertical).</li>
-<li>If two segments intersect, then they intersect in a single point(they are not collinear).</li>
-<li>No three lines intersect in a common point.</li>
-</ol>
-<h1 id="plane-sweep-alg"><a href="#Plane_Sweep_Alg" class="headerlink" title="Plane Sweep Alg."></a>Plane Sweep Alg.</h1><h2 id="concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><ol>
-<li>Cleanliness property: all intersections to the left of sweep line $l$ have been reported</li>
-<li>Sweep line status: store segments that intersect the sweep line $l$ ,ordered along the intersection with $l$.</li>
-<li>Events: (1)Points in time when sweep line status chaneges combinatorially(i.e., the order of segments intersecting $l$ changes). (2)Endpoints of segments(insert in beginning) (3)Intersection points(computing on the fly during plane sweep)</li>
-</ol>
-<h2 id="intersection-lemma"><a href="#Intersection_Lemma" class="headerlink" title="Intersection Lemma"></a>Intersection Lemma</h2><p>＊Lemma＊: Let $s$,$s’$ be two non-vertical segments whose interiors intersect in a single point $p$. Assume there is no third segment passing through $p$. Then there is an event point to the left of $p$ where $s$ and $s$,$s’$ become adjacent(and hence are tested for intersection).</p>
-<h2 id="data-structure"><a href="#Data_structure" class="headerlink" title="Data structure"></a>Data structure</h2><ol>
-<li>sweep line: orderded dictionary(balanced binary search tree) sorted vertically from top to down</li>
-<li>future event points: priority queue ordered from left to right by x-coordinates</li>
-</ol>
-<h2 id="alg"><a href="#Alg" class="headerlink" title="Alg"></a>Alg</h2><ol>
-<li><p>Insert all of the points o the line segments of $S$ into the event queue. The initial sweep-line status is empty.</p>
-</li>
-<li><p>while the event queue is nonempty, extract the next event in the queue.There are there cases,depending on the type of the event:</p>
-<ul>
-<li><p><em>Left endpoints</em>:</p>
-<p>  (a)insert this line segments $s$ into the sweep-line status,based on the y-coordinats of its left endpoints  </p>
-<p>  (b)Let $S$ and $s’$ be the segments immediately above and below $s$ on the sweep line. If there is an event associated with the pair, remove it from the event queue.  </p>
-<p>  (c)Test for intersection between $s$ and $s’$ and between $s$ and $s’’$ to the right of the sweep line. If so, add the correspoing event(s) to the event queue.</p>
-</li>
-<li><p><em>Right endpoint</em>:</p>
-<p>  (a)Let $s$ and $s’$ be the segments immediately above and below the sweep line.  </p>
-<p>  (b)Delete segments $s$ from the sweep line status.  </p>
-<p>  (c)Test for intersections between $s$ and $s’$ to the right of the sweep line. If so, add the corresponding event to the event queue.</p>
-</li>
-<li><p><em>Intersecion</em>:</p>
-<p>  (a) report this intersection.  </p>
-<p>  (b) Let $s$ and $s’$ be the two intersecting segments. Swap these two line segments in the sweep-line status.  </p>
-<p>  (c) As a result,$s$ and $s’$ have changed which segments are immediately above and below them. Remove any old events due to adjacencies that have ended and insert any new intersection events form adjacencies that have been created.</p>
-</li>
-</ul>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Computational Geometry</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/12/30/Intersection/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1109,15 +1057,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Computational Geometry</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spark</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Computational Geometry</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1129,15 +1077,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1166,6 +1114,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
