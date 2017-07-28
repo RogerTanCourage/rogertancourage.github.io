@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>spark在hive中的应用 | Just Roger</title>
+  <title>alpha-beta-pruning | Just Roger</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="连接spark sqlsparksql提供一种特殊的rdd，叫做schemerdd,schemerdd是存放row对象的rdd，每个row对象代表一行记录。附带包含每列的类型信息。Row类型只是对基本数据类型的数组的封装。schemerdd开起来和普通的rdd很像，但是可以利用结构信息更加高效的存储数据。scheme可以从外部数据创建，也可以从查询结果或者普通rdd中创建。 SchemeRDD可以">
-<meta name="keywords" content="spark">
+  <meta name="description" content="Cornell lecture">
+<meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spark在hive中的应用">
-<meta property="og:url" content="http://yoursite.com/2016/03/18/spark在hive中的应用/index.html">
+<meta property="og:title" content="alpha-beta-pruning">
+<meta property="og:url" content="http://yoursite.com/2017/07/28/alpha-beta-pruning/index.html">
 <meta property="og:site_name" content="Just Roger">
-<meta property="og:description" content="连接spark sqlsparksql提供一种特殊的rdd，叫做schemerdd,schemerdd是存放row对象的rdd，每个row对象代表一行记录。附带包含每列的类型信息。Row类型只是对基本数据类型的数组的封装。schemerdd开起来和普通的rdd很像，但是可以利用结构信息更加高效的存储数据。scheme可以从外部数据创建，也可以从查询结果或者普通rdd中创建。 SchemeRDD可以">
-<meta property="og:updated_time" content="2016-03-19T10:21:55.000Z">
+<meta property="og:description" content="Cornell lecture">
+<meta property="og:updated_time" content="2017-07-28T02:08:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spark在hive中的应用">
-<meta name="twitter:description" content="连接spark sqlsparksql提供一种特殊的rdd，叫做schemerdd,schemerdd是存放row对象的rdd，每个row对象代表一行记录。附带包含每列的类型信息。Row类型只是对基本数据类型的数组的封装。schemerdd开起来和普通的rdd很像，但是可以利用结构信息更加高效的存储数据。scheme可以从外部数据创建，也可以从查询结果或者普通rdd中创建。 SchemeRDD可以">
+<meta name="twitter:title" content="alpha-beta-pruning">
+<meta name="twitter:description" content="Cornell lecture">
   
     <link rel="alternative" href="/atom.xml" title="Just Roger" type="application/atom+xml">
   
@@ -158,20 +158,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-spark在hive中的应用" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-alpha-beta-pruning" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      spark在hive中的应用
+      alpha-beta-pruning
     </h1>
   
 
         
-        <a href="/2016/03/18/spark在hive中的应用/" class="archive-article-date">
-  	<time datetime="2016-03-18T13:30:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-18</time>
+        <a href="/2017/07/28/alpha-beta-pruning/" class="archive-article-date">
+  	<time datetime="2017-07-28T01:58:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-28</time>
 </a>
         
       </header>
@@ -180,27 +180,12 @@
       
 		
 <div id="toc">
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#连接spark-sql"><span class="toc-text">连接spark sql</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在应用中使用spark-sql"><span class="toc-text">在应用中使用spark sql</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#import"><span class="toc-text">import</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隐式转换支持"><span class="toc-text">隐式转换支持</span></a></li></ol></li></ol>
+  
   </div>
   
 
-        <h1 id="连接spark-sql"><a href="#u8FDE_u63A5spark_sql" class="headerlink" title="连接spark sql"></a>连接spark sql</h1><p>sparksql提供一种特殊的rdd，叫做schemerdd,schemerdd是存放row对象的rdd，每个row对象代表一行记录。附带包含每列的类型信息。Row类型只是对基本数据类型的数组的封装。schemerdd开起来和普通的rdd很像，但是可以利用结构信息更加高效的存储数据。scheme可以从外部数据创建，也可以从查询结果或者普通rdd中创建。</p>
-<p>SchemeRDD可以使用已有的rdd转化操作，比如map()和filter().furterhmore可以把任意的schemerdd注册为临时表（HiveContext.registerTempTable）</p>
-<p>Row对象表示schemerdd中的记录，其本质就是一个定长的字段数组，可以使用对应的getType()方法，比如getString(0)会把字段0按照字符串返回。</p>
-<pre><code>//访问toptweet这个schemerdd中的text列（第一列）
-val toptweet=toptweets.map(row=&gt;row.getString(0))
-</code></pre><p>若要把spark sql连接到一个部署好的hive上，必须把hive-site.xml复制到spark的配置文件目录中($spark_home/conf)。即使没有部署好hive,sparksql会在当前工作目录中创建出hive元数据库，叫作master_db。</p>
-<h1 id="在应用中使用spark-sql"><a href="#u5728_u5E94_u7528_u4E2D_u4F7F_u7528spark_sql" class="headerlink" title="在应用中使用spark sql"></a>在应用中使用spark sql</h1><h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2><pre><code>import org.apache.spark.sql.hive.HiveContext
-import org.apache.spark.sql.SQLContext
-</code></pre><h2 id="隐式转换支持"><a href="#u9690_u5F0F_u8F6C_u6362_u652F_u6301" class="headerlink" title="隐式转换支持"></a>隐式转换支持</h2><pre><code>//创建spark sql的HiveContext
-val hiveCtx=...
-//导入隐式转换支持
-import hiveCtx._
+        <p><a href="https://www.cs.cornell.edu/courses/cs312/2002sp/lectures/rec21.htm" target="_blank" rel="external">Cornell lecture</a></p>
 
-//创建上下文环境
-val sc=new SparkContext(...)
-val hiveCtx=new HiveContext(sc)
-</code></pre>
       
 
       
@@ -234,7 +219,7 @@ val hiveCtx=new HiveContext(sc)
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">spark</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
         		</li>
       		
 		</ul>
@@ -290,7 +275,7 @@ val hiveCtx=new HiveContext(sc)
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/03/18/spark在hive中的应用/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/28/alpha-beta-pruning/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -304,20 +289,15 @@ val hiveCtx=new HiveContext(sc)
   
 <nav id="article-nav">
   
-    <a href="/2016/03/16/spark初级/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/18/生病随笔/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          spark初级
+          生命随笔
         
       </div>
     </a>
   
-  
-    <a href="/2016/04/14/RDD编程/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">RDD编程</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
