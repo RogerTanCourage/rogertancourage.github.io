@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>使用python画cdf图 | Just Roger</title>
+  <title>mac安装anaconda总结 | Just Roger</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CDF图是常见的分析数据的图标，使用python可以快速方便的生成。 代码如下： 1234567891011121314151617181920212223242526272829303132# encoding: utf-8import numpy as npimport scikits.statsmodels.api as sm import matplotlib.pyplot as plt">
-<meta name="keywords" content="python,数据可视化">
+  <meta name="description" content="今天打算学习下《fast.ai面向程序员的深度学习课程》，需要使用jupyter notebook。之前已经装过也使用过，但是自从安装了一个新的zsh后，导致了命令行conda不能用，今天打算重新安装和配置。">
+<meta name="keywords" content="mac">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用python画cdf图">
-<meta property="og:url" content="http://yoursite.com/2017/06/27/使用python画cdf图/index.html">
+<meta property="og:title" content="mac安装anaconda总结">
+<meta property="og:url" content="http://yoursite.com/2017/07/31/mac安装anaconda总结/index.html">
 <meta property="og:site_name" content="Just Roger">
-<meta property="og:description" content="CDF图是常见的分析数据的图标，使用python可以快速方便的生成。 代码如下： 1234567891011121314151617181920212223242526272829303132# encoding: utf-8import numpy as npimport scikits.statsmodels.api as sm import matplotlib.pyplot as plt">
-<meta property="og:updated_time" content="2017-06-27T12:33:40.000Z">
+<meta property="og:description" content="今天打算学习下《fast.ai面向程序员的深度学习课程》，需要使用jupyter notebook。之前已经装过也使用过，但是自从安装了一个新的zsh后，导致了命令行conda不能用，今天打算重新安装和配置。">
+<meta property="og:updated_time" content="2017-07-31T06:25:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用python画cdf图">
-<meta name="twitter:description" content="CDF图是常见的分析数据的图标，使用python可以快速方便的生成。 代码如下： 1234567891011121314151617181920212223242526272829303132# encoding: utf-8import numpy as npimport scikits.statsmodels.api as sm import matplotlib.pyplot as plt">
+<meta name="twitter:title" content="mac安装anaconda总结">
+<meta name="twitter:description" content="今天打算学习下《fast.ai面向程序员的深度学习课程》，需要使用jupyter notebook。之前已经装过也使用过，但是自从安装了一个新的zsh后，导致了命令行conda不能用，今天打算重新安装和配置。">
   
     <link rel="alternative" href="/atom.xml" title="Just Roger" type="application/atom+xml">
   
@@ -158,20 +158,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-使用python画cdf图" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-mac安装anaconda总结" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      使用python画cdf图
+      mac安装anaconda总结
     </h1>
   
 
         
-        <a href="/2017/06/27/使用python画cdf图/" class="archive-article-date">
-  	<time datetime="2017-06-27T12:28:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
+        <a href="/2017/07/31/mac安装anaconda总结/" class="archive-article-date">
+  	<time datetime="2017-07-31T06:01:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-31</time>
 </a>
         
       </header>
@@ -180,13 +180,22 @@
       
 		
 <div id="toc">
-  
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载安装"><span class="toc-text">下载安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境变量配置"><span class="toc-text">环境变量配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#path"><span class="toc-text">PATH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bash"><span class="toc-text">bash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zsh"><span class="toc-text">zsh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#execution-error-doesnt-understand-the-open-location-message-1708"><span class="toc-text">execution error: doesn’t understand the “open location” message. (-1708)</span></a></li></ol></li></ol>
   </div>
   
 
-        <p>CDF图是常见的分析数据的图标，使用python可以快速方便的生成。</p>
-<p>代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># encoding: utf-8</span></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> scikits.statsmodels.api <span class="keyword">as</span> sm </div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">	a = open(<span class="string">"data_1.txt"</span>,<span class="string">'r'</span>)</div><div class="line">	sample = []</div><div class="line">	s = <span class="number">0.0</span></div><div class="line">	<span class="keyword">for</span> line <span class="keyword">in</span> a.readlines():</div><div class="line">		sample.append(float(line))</div><div class="line">		s += float(line)</div><div class="line"></div><div class="line">	<span class="keyword">print</span> <span class="string">"location times: "</span> + str(len(sample))</div><div class="line">	<span class="keyword">print</span> <span class="string">"mean error: "</span> + str(s/(len(sample)))</div><div class="line">	sample.sort()</div><div class="line">	cep90len = int(len(sample) * <span class="number">0.9</span>)</div><div class="line">	cep90sum = <span class="number">0.0</span></div><div class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(cep90len):</div><div class="line">		cep90sum += sample[i]</div><div class="line">	<span class="keyword">print</span> <span class="string">"CEP_90%: "</span> + str(cep90sum/cep90len)</div><div class="line">	<span class="keyword">print</span> <span class="string">"cep 90 len"</span> + str(cep90len)</div><div class="line">	<span class="comment"># sample = np.random.uniform(0, 1, 50)</span></div><div class="line">	ecdf = sm.tools.tools.ECDF(sample)</div><div class="line"></div><div class="line">	x = np.linspace(min(sample), max(sample))</div><div class="line">	y = ecdf(x)</div><div class="line">	plt.step(x,y)</div><div class="line">	plt.ylabel(<span class="string">"CDF"</span>)</div><div class="line">	plt.xlabel(<span class="string">"ERROR/m"</span>)</div><div class="line">	plt.show()</div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">	main()</div></pre></td></tr></table></figure>
+        <p>今天打算学习下《fast.ai面向程序员的深度学习课程》，需要使用jupyter notebook。之前已经装过也使用过，但是自从安装了一个新的zsh后，导致了命令行conda不能用，今天打算重新安装和配置。</p>
+<a id="more"></a>
+<h2 id="下载安装"><a href="#u4E0B_u8F7D_u5B89_u88C5" class="headerlink" title="下载安装"></a>下载安装</h2><p>anaconda是一个包管理工具，安装anaconda即附带安装了一些常用工具，比如jupyter notebook，后续也可以使用conda命令安装新的包。</p>
+<p>首先去<a href="https://www.continuum.io/downloads" target="_blank" rel="external">网站</a>下载安装包，python 2和3都可以，notebook以后对应使用的语言就是python2和python3。下载完成后按照指引安装即可。</p>
+<h2 id="环境变量配置"><a href="#u73AF_u5883_u53D8_u91CF_u914D_u7F6E" class="headerlink" title="环境变量配置"></a>环境变量配置</h2><h3 id="path"><a href="#PATH" class="headerlink" title="PATH"></a>PATH</h3><p>PATH就是我们要修改的变量，path多个变量使用冒号分割的，因此我们增加环境变量的语句是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=$PATH:~anaconda/bin</div></pre></td></tr></table></figure>
+<h3 id="bash"><a href="#bash" class="headerlink" title="bash"></a>bash</h3><p>配置位置设计两个文件：/etc/profile和~/.bash_profile。/etc/profile 针对系统所有用户的全局变量，需要root权限修改，我们一般不改这个文件。对于一般用户而言，建议修改~/.bash_profile，在文件里添加上面的命令即可。</p>
+<p>添加完后，使用如下命令试变量生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source ~/.bash_profile</div></pre></td></tr></table></figure>
+<h3 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h3><p>对于zsh用户，需要修改的文件是~/.zshrc，修改完后同样适用source命令使变量生效</p>
+<h3 id="execution-error-doesnt-understand-the-open-location-message-1708"><a href="#execution_error_3A_doesn_u2019t_understand_the__u201Copen_location_u201D_message-__28-1708_29" class="headerlink" title="execution error: doesn’t understand the “open location” message. (-1708)"></a>execution error: doesn’t understand the “open location” message. (-1708)</h3><p>启动jupyter notebook时发生了这个错误，原因可能是mac版本更新的缘故，解决方法如是在~/.jupyter/jupyter_notebook_config.py中添加如下语句：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">c.NotebookApp.browser = <span class="string">u'Safari'</span></div></pre></td></tr></table></figure>
 
       
 
@@ -221,11 +230,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数据可视化</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mac</a>
         		</li>
       		
 		</ul>
@@ -281,7 +286,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/27/使用python画cdf图/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/31/mac安装anaconda总结/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -295,20 +300,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/02/gitlab/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/28/alpha-beta-pruning/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          gitlab
+          alpha-beta-pruning
         
       </div>
     </a>
   
-  
-    <a href="/2017/07/18/生病随笔/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">生命随笔</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
