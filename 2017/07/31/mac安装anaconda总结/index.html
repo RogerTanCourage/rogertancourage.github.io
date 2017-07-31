@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/31/mac安装anaconda总结/index.html">
 <meta property="og:site_name" content="Just Roger">
 <meta property="og:description" content="今天打算学习下《fast.ai面向程序员的深度学习课程》，需要使用jupyter notebook。之前已经装过也使用过，但是自从安装了一个新的zsh后，导致了命令行conda不能用，今天打算重新安装和配置。">
-<meta property="og:updated_time" content="2017-07-31T06:27:59.000Z">
+<meta property="og:updated_time" content="2017-07-31T06:29:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mac安装anaconda总结">
 <meta name="twitter:description" content="今天打算学习下《fast.ai面向程序员的深度学习课程》，需要使用jupyter notebook。之前已经装过也使用过，但是自从安装了一个新的zsh后，导致了命令行conda不能用，今天打算重新安装和配置。">
@@ -193,6 +193,7 @@
 <h3 id="bash"><a href="#bash" class="headerlink" title="bash"></a>bash</h3><p>配置位置设计两个文件：/etc/profile和~/.bash_profile。/etc/profile 针对系统所有用户的全局变量，需要root权限修改，我们一般不改这个文件。对于一般用户而言，建议修改~/.bash_profile，在文件里添加上面的命令即可。</p>
 <p>添加完后，使用如下命令试变量生效</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source ~/.bash_profile</div></pre></td></tr></table></figure>
+<p>ps: 安装andaconda过程中，可能已经自动更改了~/.bash_profile:</p>
 <h3 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h3><p>对于zsh用户，需要修改的文件是~/.zshrc，修改完后同样适用source命令使变量生效</p>
 <h2 id="execution-error-doesnt-understand-the-open-location-message-1708"><a href="#execution_error_3A_doesn_u2019t_understand_the__u201Copen_location_u201D_message-__28-1708_29" class="headerlink" title="execution error: doesn’t understand the “open location” message. (-1708)"></a>execution error: doesn’t understand the “open location” message. (-1708)</h2><p>启动jupyter notebook时发生了这个错误，原因可能是mac版本更新的缘故，解决方法如是在~/.jupyter/jupyter_notebook_config.py中添加如下语句：</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">c.NotebookApp.browser = <span class="string">u'Safari'</span></div></pre></td></tr></table></figure>
